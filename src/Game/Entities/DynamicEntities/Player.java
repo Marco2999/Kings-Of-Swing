@@ -18,19 +18,24 @@ public class Player extends BaseDynamicEntity {
 
     public String facing = "Left";
     public boolean moving = false;
-    public Animation playerSmallLeftAnimation,playerSmallRightAnimation,playerBigLeftWalkAnimation,playerBigRightWalkAnimation,playerBigLeftRunAnimation,playerBigRightRunAnimation;
+    public Animation playerLeftAnimation,playerRightAnimation,playerIdleRightAnimation, playerIdleLeftAnimation,
+    playerJumpRightAnimation, playerJumpLeftAnimation, playerRunRightAnimation, playerRunLeftAnimation;
     public boolean falling = true, jumping = false,isBig=false,running = false,changeDirrection=false;
     public double gravityAcc = 0.38;
     int changeDirectionCounter=0;
 
-    public Player(int x, int y, int width, int height, Handler handler, BufferedImage sprite,Animation PSLA,Animation PSRA,Animation PBLWA,Animation PBRWA,Animation PBLRA,Animation PBRRA) {
+    public Player(int x, int y, int width, int height, Handler handler, BufferedImage sprite,Animation PLA,Animation PRA,Animation PIRA,
+            Animation PILA, Animation PJRA, Animation PJLA, Animation PRRA, Animation PRLA) {
         super(x, y, width, height, handler, sprite);
-        playerBigLeftRunAnimation=PBLRA;
-        playerBigLeftWalkAnimation=PBLWA;
-        playerBigRightRunAnimation=PBRRA;
-        playerBigRightWalkAnimation=PBRWA;
-        playerSmallLeftAnimation=PSLA;
-        playerSmallRightAnimation=PSRA;
+
+        playerLeftAnimation=PLA;
+        playerRightAnimation=PRA;
+        playerIdleRightAnimation=PIRA;
+        playerIdleLeftAnimation=PILA;
+        playerJumpRightAnimation=PJRA;
+        playerJumpLeftAnimation=PJLA;
+        playerRunRightAnimation=PRRA;
+        playerRunLeftAnimation=PRLA;
     }
 
     @Override
@@ -48,22 +53,30 @@ public class Player extends BaseDynamicEntity {
         checkMarioHorizontalCollision();
         checkTopCollisions();
         checkItemCollision();
-        if(!isBig) {
-            if (facing.equals("Left") && moving) {
-                playerSmallLeftAnimation.tick();
-            } else if (facing.equals("Right") && moving) {
-                playerSmallRightAnimation.tick();
-            }
-        }else{
-            if (facing.equals("Left") && moving && !running) {
-                playerBigLeftWalkAnimation.tick();
-            } else if (facing.equals("Left") && moving && running) {
-                playerBigLeftRunAnimation.tick();
-            } else if (facing.equals("Right") && moving && !running) {
-                playerBigRightWalkAnimation.tick();
-            } else if (facing.equals("Right") && moving && running) {
-                playerBigRightRunAnimation.tick();
-            }
+        if (facing.equals("Left") && moving && !jumping && !falling) {
+            playerLeftAnimation.tick();
+            playerRunLeftAnimation.tick();
+            playerJumpRightAnimation.end();
+            playerJumpLeftAnimation.end();
+        } else if (facing.equals("Right") && moving && !jumping  && !falling) {
+            playerRightAnimation.tick();
+            playerRunRightAnimation.tick();
+            playerJumpRightAnimation.end();
+            playerJumpLeftAnimation.end();
+        }
+        else if(facing.equals("Left") && !moving && !jumping  && !falling) {
+            playerIdleLeftAnimation.tick();
+            playerJumpRightAnimation.end();
+            playerJumpLeftAnimation.end();
+        }
+        else if(facing.equals("Right") && !moving && !jumping  && !falling){
+            playerIdleRightAnimation.tick();
+            playerJumpRightAnimation.end();
+            playerJumpLeftAnimation.end();
+        }
+        else if(jumping || falling) {
+            playerJumpLeftAnimation.tick();
+            playerJumpRightAnimation.tick();
         }
     }
 

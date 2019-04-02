@@ -34,6 +34,17 @@ public class Images {
     public static BufferedImage[] marioBigJumpLeft;//also store ide sprites like looking up or down and left<->right transition
     public static BufferedImage[] marioBigJumpRight;
     
+    public static BufferedImage[] DKIdleRight;
+    public static BufferedImage[] DKIdleLeft;
+    public static BufferedImage[] DKWalkRight;
+    public static BufferedImage[] DKWalkLeft;
+    public static BufferedImage[] DKJumpRight;
+    public static BufferedImage[] DKJumpLeft;
+    public static BufferedImage[] DKLook;
+    public static BufferedImage[] DKTurn;
+    
+    
+    
     public static BufferedImage[] item;
     public static BufferedImage[] enemy;
     public static BufferedImage[] hitWall;
@@ -77,6 +88,7 @@ public class Images {
     private SpriteSheet goombaSpriteSheet;
     private SpriteSheet SSpriteSheet;
     private SpriteSheet SAttackSpriteSheet;
+    private SpriteSheet DonkeyKongSheet;
 
     public Images() {
 
@@ -106,7 +118,14 @@ public class Images {
         marioBigJumpRight = new BufferedImage[5];
         goomba = new BufferedImage[2];
 
-
+        DKIdleRight = new BufferedImage[5];
+        DKIdleLeft = new BufferedImage[5];
+        DKWalkRight = new BufferedImage[6];
+        DKWalkLeft = new BufferedImage[6];
+        DKJumpRight = new BufferedImage[8];
+        DKJumpLeft = new BufferedImage[8];
+        DKLook = new BufferedImage[4];
+        DKTurn = new BufferedImage[2];
 
         try {
 
@@ -120,7 +139,7 @@ public class Images {
             goombaSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/goombaSprite.png")));
             SSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/Sheets.png")));
             SAttackSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet2.png")));
-
+            DonkeyKongSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/donkey-kong-2.png")));
 
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
@@ -190,6 +209,62 @@ public class Images {
             marioBigJumpRight[2] = playerSpriteSheet.crop(248,196,15,27);//up
             marioBigJumpRight[3] = playerSpriteSheet.crop(287,122,16,15);//down
             marioBigJumpRight[4] = playerSpriteSheet.crop(368,115,16,29);//Change
+            
+            
+            
+            DKIdleRight[0] = DonkeyKongSheet.crop(215, 154, 29, 30);
+            DKIdleRight[1] = DonkeyKongSheet.crop(243, 154, 29, 30);
+            DKIdleRight[2] = DonkeyKongSheet.crop(273, 154, 29, 30);
+            DKIdleRight[3] = DonkeyKongSheet.crop(304, 154, 29, 30);
+            DKIdleRight[4] = DonkeyKongSheet.crop(332, 154, 29, 30);
+            
+            DKIdleLeft[0] = DonkeyKongSheet.crop(185, 154, 29, 30);
+            DKIdleLeft[1] = DonkeyKongSheet.crop(157, 154, 29, 30);
+            DKIdleLeft[2] = DonkeyKongSheet.crop(127, 154, 29, 30);
+            DKIdleLeft[3] = DonkeyKongSheet.crop(96, 154, 29, 30);
+            DKIdleLeft[4] = DonkeyKongSheet.crop(68, 154, 29, 30);
+            
+            DKWalkRight[0] = DonkeyKongSheet.crop(244, 256, 29, 30);
+            DKWalkRight[1] = DonkeyKongSheet.crop(273, 256, 29, 30);
+            DKWalkRight[2] = DonkeyKongSheet.crop(302, 256, 29, 30);
+            DKWalkRight[3] = DonkeyKongSheet.crop(331, 256, 29, 30);
+            DKWalkRight[4] = DonkeyKongSheet.crop(360, 256, 29, 30);
+            DKWalkRight[5] = DonkeyKongSheet.crop(389, 256, 29, 30);
+            
+            DKWalkLeft[0] = DonkeyKongSheet.crop(156, 256, 29, 30);
+            DKWalkLeft[1] = DonkeyKongSheet.crop(128, 256, 29, 30);
+            DKWalkLeft[2] = DonkeyKongSheet.crop(98, 256, 29, 30);
+            DKWalkLeft[3] = DonkeyKongSheet.crop(69, 256, 29, 30);
+            DKWalkLeft[4] = DonkeyKongSheet.crop(40, 256, 29, 30);
+            DKWalkLeft[5] = DonkeyKongSheet.crop(11, 256, 29, 30);
+            
+            DKJumpRight[0] = DonkeyKongSheet.crop(213, 481, 28, 30);
+            DKJumpRight[1] = DonkeyKongSheet.crop(240, 481, 28, 30);
+            DKJumpRight[2] = DonkeyKongSheet.crop(267, 481, 28, 30);
+            DKJumpRight[3] = DonkeyKongSheet.crop(294, 481, 27, 30);
+            DKJumpRight[4] = DonkeyKongSheet.crop(343, 481, 24, 30);
+            DKJumpRight[5] = DonkeyKongSheet.crop(294, 481, 27, 30);
+            DKJumpRight[6] = DonkeyKongSheet.crop(371, 481, 28, 30);
+            DKJumpRight[7] = DonkeyKongSheet.crop(399, 481, 28, 30);
+            
+            DKJumpLeft[0] = DonkeyKongSheet.crop(188, 481, 28, 30);
+            DKJumpLeft[1] = DonkeyKongSheet.crop(161, 481, 28, 30);
+            DKJumpLeft[2] = DonkeyKongSheet.crop(134, 481, 28, 30);
+            DKJumpLeft[3] = DonkeyKongSheet.crop(108, 481, 27, 30);
+            DKJumpLeft[4] = DonkeyKongSheet.crop(85, 481, 24, 30);
+            DKJumpLeft[5] = DonkeyKongSheet.crop(59, 481, 27, 30);
+            DKJumpLeft[6] = DonkeyKongSheet.crop(30, 481, 28, 30);
+            DKJumpLeft[7] = DonkeyKongSheet.crop(2, 481, 28, 30);
+            
+            DKLook[0] = DonkeyKongSheet.crop(243, 413, 29, 30);
+            DKLook[1] = DonkeyKongSheet.crop(157, 413, 29, 30);
+            DKLook[2] = DonkeyKongSheet.crop(215, 576, 29, 28);
+            DKLook[3] = DonkeyKongSheet.crop(185, 576, 29, 28);
+            
+            DKTurn[0] = DonkeyKongSheet.crop(214, 546, 29, 30);
+            DKTurn[1] = DonkeyKongSheet.crop(187, 546, 29, 30);
+            
+            
             
             item[0] =  ImageIO.read(getClass().getResourceAsStream("/Sheets/item/SL1.png"));
             item[1] =  ImageIO.read(getClass().getResourceAsStream("/Sheets/item/SL2.png"));
