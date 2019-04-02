@@ -7,6 +7,7 @@ import Game.Entities.DynamicEntities.Mushroom;
 import Game.Entities.StaticEntities.*;
 import Main.Handler;
 import Resources.Images;
+import javafx.scene.layout.Border;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -21,6 +22,10 @@ public class MapBuilder {
 	public static int misteryBlock = new Color(255,216,0).getRGB();
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
+	public static int borderBlock = new Color(255,102,255).getRGB(); // 
+	public static int cloudBlock = new Color(255,254,255).getRGB();	// White
+	public static int beamBlock = new Color(255,0,127).getRGB(); // Magenta
+	public static int donutBlock = new Color(255,178,102).getRGB(); // Light Orange
 	public static boolean mapDone = false;
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
@@ -51,6 +56,18 @@ public class MapBuilder {
 				}else if(currentPixel == goomba){
 					BaseDynamicEntity Goomba = new Goomba(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Goomba);
+				}else if(currentPixel == borderBlock){
+					BaseStaticEntity BorderBlock = new BorderBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addBorderBlock(BorderBlock);
+				}else if(currentPixel == cloudBlock){
+					BaseStaticEntity cloudBlock = new CloudBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addBlock(cloudBlock);
+				}else if(currentPixel == beamBlock){
+					BaseStaticEntity beamBlock = new BeamBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addBlock(beamBlock);
+				}else if(currentPixel == donutBlock){
+					BaseStaticEntity donutBlock = new DonutBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addBlock(donutBlock);
 				}
 			}
 

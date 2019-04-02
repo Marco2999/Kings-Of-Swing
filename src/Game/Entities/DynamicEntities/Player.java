@@ -2,12 +2,15 @@ package Game.Entities.DynamicEntities;
 
 import Game.Entities.EntityBase;
 import Game.Entities.StaticEntities.BaseStaticEntity;
+import Game.GameStates.State;
 import Main.Handler;
 import Resources.Animation;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+
+import Display.UI.UIPointer;
 
 public class Player extends BaseDynamicEntity {
 
@@ -83,7 +86,7 @@ public class Player extends BaseDynamicEntity {
         Player mario = this;
         ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
         ArrayList<BaseDynamicEntity> enemies =  handler.getMap().getEnemiesOnMap();
-
+        
         Rectangle marioBottomBounds =getBottomBounds();
 
         if (!mario.jumping) {
@@ -115,7 +118,9 @@ public class Player extends BaseDynamicEntity {
 
     public void checkTopCollisions() {
         Player mario = this;
+        boolean marioDies = false;
         ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
+        ArrayList<BaseStaticEntity> borderBlocks =  handler.getMap().getBordersOnMap();
 
         Rectangle marioTopBounds = mario.getTopBounds();
         for (BaseStaticEntity brick : bricks) {
@@ -125,12 +130,25 @@ public class Player extends BaseDynamicEntity {
                 mario.setY(brick.getY() + brick.height);
             }
         }
+        for (BaseStaticEntity borderBlock : borderBlocks) {
+            Rectangle borderBounds = borderBlock.getBottomBounds();
+            if (marioTopBounds.intersects(borderBounds)) {
+                marioDies = true;
+                break;
+            }
+        }
+        if(marioDies) {
+//        	 handler.getGame().getMusicHandler().();
+        	State.setState(handler.getGame().menuState);
+        }
     }
 
     public void checkMarioHorizontalCollision(){
         Player mario = this;
         ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
         ArrayList<BaseDynamicEntity> enemies = handler.getMap().getEnemiesOnMap();
+        ArrayList<BaseStaticEntity> borderBlocks =  handler.getMap().getBordersOnMap();
+
 
         boolean marioDies = false;
         boolean toRight = moving && facing.equals("Right");
@@ -155,9 +173,18 @@ public class Player extends BaseDynamicEntity {
                 break;
             }
         }
+		for (BaseStaticEntity borderBlock : borderBlocks) {
+			Rectangle borderBounds = !toRight ? borderBlock.getRightBounds() : borderBlock.getLeftBounds();
+            if (marioBounds.intersects(borderBounds)) {
+                marioDies = true;
+            }
+        }
 
         if(marioDies) {
+//        	State.setState(handler.getGame().menuState);
+        	UIPointer.kill = true;
             handler.getMap().reset();
+            marioDies = false;
         }
     }
 

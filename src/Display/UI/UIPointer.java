@@ -14,7 +14,10 @@ import java.util.Random;
 public class UIPointer extends BaseDynamicEntity {
 
     private Animation idle,GB1,GB2,GB3,FG,hit;
-    private boolean FlagGB1=false,FlagGB2=false,FlagGB3=false,FlagFG=false,FlagSmash=false,wasHit=false,died=false,attacking=false,start=true,movingToIdle =false,outOfCamera=true,smash=false,kill=false,killed=false,bulletOnMap=false;
+    private boolean FlagGB1=false,FlagGB2=false,FlagGB3=false,FlagFG=false,FlagSmash=false,wasHit=false,died=false,attacking=false,start=true,movingToIdle =false,outOfCamera=true,smash=false;
+	public static boolean kill=false;
+	private boolean killed=false;
+	private boolean bulletOnMap=false;
     private float HitR=0.0f,HitG=0.0f,HitB=0.0f;
     private int health=3,attackCounter=0,startX,startY,idleCounter=0,squeeze=0,grabcounter=0;
     private Dimension wasHitDim = new Dimension();

@@ -220,6 +220,23 @@ public class MenuState extends State {
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.goomba;
 		}
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_8)){
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,11,0.5f,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.borderBlock;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_9)){ // Cloud
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,1,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.cloudBlock;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_I)){ // Beam
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,0,0.49f), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.beamBlock;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_O)){ // Donut
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,0.6f,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.donutBlock;
+		}
 
 		if(mouseManager.isLeftPressed() && !clicked){
 			int posX =mouseManager.getMouseX()/GridPixelsize;
@@ -254,7 +271,11 @@ public class MenuState extends State {
 					"4 -> Surface Block (Orange)\n" +
 					"5 -> Bounds Block (Black)\n" +
 					"6 -> Mushroom (Purple)\n" +
-					"7 -> Goomba (Brown)");
+					"7 -> Goomba (Brown)\n" +
+					"8 -> Border Block (Orange)\n" +
+					"9 -> Cloud Block\n" +
+					"O -> Beam Block\n" +
+					"P -> Donut Block\n" );
 		}
 	}
 	public UIAnimationButton getBut() {
