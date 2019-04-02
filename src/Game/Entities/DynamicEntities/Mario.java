@@ -14,12 +14,14 @@ public class Mario extends Player{
 
 	public Mario(int x, int y, int width, int height, Handler handler) {
 		super(x, y, width, height, handler, Images.DKIdleRight[0]
-				,new Animation(100,Images.DKWalkLeft)
-				, new Animation(100,Images.DKWalkRight)
-				, new Animation(175,Images.DKIdleRight)
-				, new Animation(175,Images.DKIdleLeft)
-				, new Animation(50,Images.DKJumpRight)
-				, new Animation(50,Images.DKJumpLeft));
+                ,new Animation(100,Images.DKWalkLeft)
+                , new Animation(100,Images.DKWalkRight)
+                , new Animation(175,Images.DKIdleRight)
+                , new Animation(175,Images.DKIdleLeft)
+                , new Animation(50,Images.DKJumpRight)
+                , new Animation(50,Images.DKJumpLeft)
+                , new Animation(50,Images.DKWalkRight)
+                , new Animation(50,Images.DKWalkLeft));
 		if(isBig){
 			this.y-=48;
 			this.height+=48;
