@@ -312,14 +312,28 @@ public class Images {
             FKWalkRight[6] = FunkyKongSheet.crop(39, 387, 36, 36);
             FKWalkRight[7] = FunkyKongSheet.crop(1, 387, 36, 36);
             
-            FKJumpRight[0] = FunkyKongSheet.crop(325, 346, 36, 36);
-            FKJumpRight[1] = FunkyKongSheet.crop(283, 346, 36, 36);
-            FKJumpRight[2] = FunkyKongSheet.crop(242, 346, 36, 36);
-            FKJumpRight[3] = FunkyKongSheet.crop(191, 346, 36, 36);
-            FKJumpRight[4] = FunkyKongSheet.crop(151, 346, 36, 36);
-            FKJumpRight[5] = FunkyKongSheet.crop(103, 346, 36, 36);
-            FKJumpRight[6] = FunkyKongSheet.crop(55, 346, 36, 36);
-            FKJumpRight[7] = FunkyKongSheet.crop(0, 346, 36, 36);
+            FKJumpRight[0] = FunkyKongSheet.crop(325, 345, 36, 36);
+            FKJumpRight[1] = FunkyKongSheet.crop(283, 345, 36, 36);
+            FKJumpRight[2] = FunkyKongSheet.crop(242, 345, 36, 36);
+            FKJumpRight[3] = FunkyKongSheet.crop(191, 345, 36, 36);
+            FKJumpRight[4] = FunkyKongSheet.crop(151, 345, 36, 36);
+            FKJumpRight[5] = FunkyKongSheet.crop(103, 345, 36, 36);
+            FKJumpRight[6] = FunkyKongSheet.crop(55, 345, 36, 36);
+            FKJumpRight[7] = FunkyKongSheet.crop(0, 345, 36, 36);
+            
+            FKJumpLeft[0] = FunkyKongSheet.crop(7, 56, 36, 36);
+            FKJumpLeft[1] = FunkyKongSheet.crop(50, 56, 36, 36);
+            FKJumpLeft[2] = FunkyKongSheet.crop(89, 56, 36, 36);
+            FKJumpLeft[3] = FunkyKongSheet.crop(141, 56, 36, 36);
+            FKJumpLeft[4] = FunkyKongSheet.crop(181, 56, 36, 36);
+            FKJumpLeft[5] = FunkyKongSheet.crop(229, 56, 36, 36);
+            FKJumpLeft[6] = FunkyKongSheet.crop(277, 56, 36, 36);
+            FKJumpLeft[7] = FunkyKongSheet.crop(332, 56, 36, 36);
+            
+            FKLook[0] = FunkyKongSheet.crop(435, 56, 36, 36);
+            FKLook[1] = FunkyKongSheet.crop(57, 429, 36, 36);
+            FKLook[2] = FunkyKongSheet.crop(4, 429, 36, 36);
+            FKLook[3] = FunkyKongSheet.crop(17, 138, 36, 36);
             
             
             
