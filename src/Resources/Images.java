@@ -312,7 +312,15 @@ public class Images {
             FKWalkRight[6] = FunkyKongSheet.crop(39, 387, 36, 36);
             FKWalkRight[7] = FunkyKongSheet.crop(1, 387, 36, 36);
             
-            FKJumpRight[0] = FunkyKongSheet.crop(291, 387, 36, 36);
+            FKJumpRight[0] = FunkyKongSheet.crop(325, 346, 36, 36);
+            FKJumpRight[1] = FunkyKongSheet.crop(283, 346, 36, 36);
+            FKJumpRight[2] = FunkyKongSheet.crop(242, 346, 36, 36);
+            FKJumpRight[3] = FunkyKongSheet.crop(191, 346, 36, 36);
+            FKJumpRight[4] = FunkyKongSheet.crop(151, 346, 36, 36);
+            FKJumpRight[5] = FunkyKongSheet.crop(103, 346, 36, 36);
+            FKJumpRight[6] = FunkyKongSheet.crop(55, 346, 36, 36);
+            FKJumpRight[7] = FunkyKongSheet.crop(0, 346, 36, 36);
+            
             
             
             

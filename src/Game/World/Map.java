@@ -3,6 +3,7 @@ package Game.World;
 import Display.UI.UIPointer;
 import Game.Entities.DynamicEntities.*;
 import Game.Entities.StaticEntities.BaseStaticEntity;
+import Game.Entities.StaticEntities.BreakBlock;
 import Game.Entities.StaticEntities.Wall;
 import Main.Handler;
 import Resources.Images;
@@ -16,6 +17,7 @@ import Display.UI.UIListener;
 public class Map {
 
     ArrayList<BaseStaticEntity> blocksOnMap;
+    ArrayList<BaseStaticEntity> bordersOnMap;
     ArrayList<BaseDynamicEntity> enemiesOnMap;
     Handler handler;
     private double bottomBorder;
@@ -32,6 +34,7 @@ public class Map {
         this.listener = new UIListener( this.handler);
         this.walls = new Wall(this.handler);
         this.blocksOnMap = new ArrayList<>();
+        this.bordersOnMap = new ArrayList<>();
         this.enemiesOnMap = new ArrayList<>();
         bottomBorder=handler.getHeight();
         this.mapBackground = this.rand.nextInt(6);
@@ -39,6 +42,9 @@ public class Map {
 
     public void addBlock(BaseStaticEntity block){
         blocksOnMap.add(block);
+    }
+    public void addBorderBlock(BaseStaticEntity block){
+        bordersOnMap.add(block);
     }
     public void addEnemy(BaseDynamicEntity entity){
         if(entity instanceof Mario){
@@ -57,6 +63,9 @@ public class Map {
         g2.translate(-camLocation.x, -camLocation.y);
         g2.drawImage(Images.backgrounds2[this.mapBackground], camLocation.x, camLocation.y, this.handler.getWidth(), this.handler.getHeight(),null);
         for (BaseStaticEntity block:blocksOnMap) {
+            g2.drawImage(block.sprite,block.x,block.y,block.width,block.height,null);
+        }
+        for (BaseStaticEntity block:bordersOnMap) {
             g2.drawImage(block.sprite,block.x,block.y,block.width,block.height,null);
         }
         for (BaseDynamicEntity entity:enemiesOnMap) {
@@ -85,6 +94,9 @@ public class Map {
     public ArrayList<BaseStaticEntity> getBlocksOnMap() {
         return blocksOnMap;
     }
+    public ArrayList<BaseStaticEntity> getBordersOnMap() {
+        return bordersOnMap;
+    }
 
     public ArrayList<BaseDynamicEntity> getEnemiesOnMap() {
         return enemiesOnMap;
@@ -106,4 +118,5 @@ public class Map {
 
     public void reset() {
     }
+
 }

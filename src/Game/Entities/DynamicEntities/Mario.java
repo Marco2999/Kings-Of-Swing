@@ -18,7 +18,7 @@ public class Mario extends Player{
 				, new Animation(100,Images.FKWalkRight)
 				, new Animation(175,Images.FKIdleRight)
 				, new Animation(175,Images.FKIdleLeft)
-				, new Animation(50,Images.DKJumpRight)
+				, new Animation(50,Images.FKJumpRight)
 				, new Animation(50,Images.DKJumpLeft)
 				,new Animation(50,Images.FKWalkRight)
 				, new Animation(50,Images.FKWalkLeft));
