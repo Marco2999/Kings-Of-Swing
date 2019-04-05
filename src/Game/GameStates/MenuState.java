@@ -220,6 +220,27 @@ public class MenuState extends State {
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.goomba;
 		}
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_8)){
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,11,0.5f,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.borderBlock;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_9)){ // Cloud
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,1,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.cloudBlock;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_I)){ // Beam
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,0,0.49f), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.beamBlock;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_O)){ // Donut
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,0.6f,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.donutBlock;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)){ // Klaptrap
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.4f,1,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.klaptrap;
+		}
 
 		if(mouseManager.isLeftPressed() && !clicked){
 			int posX =mouseManager.getMouseX()/GridPixelsize;
@@ -248,13 +269,18 @@ public class MenuState extends State {
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H)){
 			JOptionPane.showMessageDialog(display.getFrame(), "Number key <-> Color Mapping: \n" +
 					"0 -> Erase \n" +
-					"1 -> Mario (Red)\n" +
+					"1 -> Donkey Kong (Red)\n" +
 					"2 -> Break Block (Blue)\n" +
 					"3 -> Mystery Block (Yellow)\n" +
 					"4 -> Surface Block (Orange)\n" +
 					"5 -> Bounds Block (Black)\n" +
 					"6 -> Mushroom (Purple)\n" +
-					"7 -> Goomba (Brown)");
+					"7 -> Goomba (Brown)\n" +
+					"8 -> Border Block (Orange)\n" +
+					"9 -> Cloud Block (Light Gray)\n" +
+					"I -> Beam Block (Magenta)\n" +
+					"O -> Donut Block (Cream)\n" +
+					"P -> Klaptrap (Light Blue)");
 		}
 	}
 	public UIAnimationButton getBut() {

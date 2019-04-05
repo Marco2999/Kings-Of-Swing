@@ -54,7 +54,6 @@ public class Images {
     
     
     
-    
     public static BufferedImage[] item;
     public static BufferedImage[] enemy;
     public static BufferedImage[] hitWall;
@@ -84,7 +83,13 @@ public class Images {
     public static BufferedImage boundBlock;
     public static BufferedImage mushroom;
     public static BufferedImage goombaDies;
-
+    public static BufferedImage borderBlock;
+    public static SpriteSheet blocks; // Sheet with the 3 blocks below
+    public static BufferedImage cloudBlock;
+    public static BufferedImage beamBlock;
+    public static BufferedImage donutBlock;
+  
+    
     private SpriteSheet mainmenuSpriteSheet;
     private SpriteSheet backgroundSpriteSheet;
     private SpriteSheet interactableSpriteSheet;
@@ -95,6 +100,12 @@ public class Images {
     private SpriteSheet SAttackSpriteSheet;
     private SpriteSheet DonkeyKongSheet;
     private SpriteSheet FunkyKongSheet;
+    
+    private SpriteSheet KlapRight1;
+    private SpriteSheet KlapLeft1;
+
+    public static BufferedImage[] KlapLeft;
+    public static BufferedImage[] KlapRight;
 
     public Images() {
 
@@ -133,7 +144,6 @@ public class Images {
         DKLook = new BufferedImage[4];
         DKTurn = new BufferedImage[2];
         
-        
         FKIdleRight = new BufferedImage[4];
         FKIdleLeft = new BufferedImage[4];
         FKWalkRight = new BufferedImage[8];
@@ -143,6 +153,9 @@ public class Images {
         FKLook = new BufferedImage[4];
         FKTurn = new BufferedImage[2];
         
+        
+        KlapRight = new BufferedImage[4];
+        KlapLeft = new BufferedImage[4];
 
         try {
 
@@ -158,6 +171,8 @@ public class Images {
             SAttackSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet2.png")));
             DonkeyKongSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/donkey-kong-2.png")));
             FunkyKongSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/FunkyKongSheet.png")));
+            KlapRight1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap2.png")));
+            KlapLeft1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap.png")));
 
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
@@ -281,6 +296,16 @@ public class Images {
             
             DKTurn[0] = DonkeyKongSheet.crop(214, 546, 29, 30);
             DKTurn[1] = DonkeyKongSheet.crop(187, 546, 29, 30);
+            
+            KlapRight[0] = KlapRight1.crop(0, 0, 31, 16);
+            KlapRight[1] = KlapRight1.crop(32, 0, 31, 16);
+            KlapRight[2] = KlapRight1.crop(64, 0, 31, 16);
+            KlapRight[3] = KlapRight1.crop(96, 0, 32, 18);
+            
+            KlapLeft[3] = KlapRight1.crop(0, 0, 31, 18);
+            KlapLeft[2] = KlapRight1.crop(32, 0, 31, 16);
+            KlapLeft[1] = KlapRight1.crop(64, 0, 31, 16);
+            KlapLeft[0] = KlapRight1.crop(96, 0, 32, 16);
             
             
             
@@ -451,6 +476,14 @@ public class Images {
             surfaceBlock = interactableSpriteSheet.crop(112,93,16,16);
             //breakBlock = blockSpriteSheet.crop(272,112,16,16);
             breakBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/brick.png"));
+            borderBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/BorderBlock.png"));
+            blocks = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/blocks.png")));
+            
+            cloudBlock = blocks.crop(0, 0, 32, 32);
+            beamBlock = blocks.crop(32, 0, 32, 32);
+            donutBlock = blocks.crop(64, 0, 32, 32);
+            
+            
 
             //items
             mushroom = interactableSpriteSheet.crop(112,34,16,16);

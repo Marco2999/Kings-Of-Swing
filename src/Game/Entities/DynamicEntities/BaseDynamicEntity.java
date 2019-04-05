@@ -39,6 +39,19 @@ public class BaseDynamicEntity extends EntityBase {
                 }
             }
         }
+        for (BaseStaticEntity borderBlock : handler.getMap().getBordersOnMap()) {
+            Rectangle borderBounds = !toRight ? borderBlock.getRightBounds() : borderBlock.getLeftBounds();
+            if (mushroomBounds.intersects(borderBounds)) {
+                if(toRight) {
+                    direction = "Left";
+                    setX(borderBlock.getX() - getDimension().width);
+                }
+                else{
+                    direction = "Right";
+                    setX(borderBlock.getX() + borderBlock.getDimension().width);
+                }
+            }
+        }
 
         for(BaseDynamicEntity enemy : handler.getMap().getEnemiesOnMap()){
             Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
