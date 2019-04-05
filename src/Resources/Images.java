@@ -44,7 +44,6 @@ public class Images {
     public static BufferedImage[] DKTurn;
     
     
-    
     public static BufferedImage[] item;
     public static BufferedImage[] enemy;
     public static BufferedImage[] hitWall;
@@ -79,6 +78,7 @@ public class Images {
     public static BufferedImage cloudBlock;
     public static BufferedImage beamBlock;
     public static BufferedImage donutBlock;
+  
     
     private SpriteSheet mainmenuSpriteSheet;
     private SpriteSheet backgroundSpriteSheet;
@@ -89,6 +89,12 @@ public class Images {
     private SpriteSheet SSpriteSheet;
     private SpriteSheet SAttackSpriteSheet;
     private SpriteSheet DonkeyKongSheet;
+    
+    private SpriteSheet KlapRight1;
+    private SpriteSheet KlapLeft1;
+
+    public static BufferedImage[] KlapLeft;
+    public static BufferedImage[] KlapRight;
 
     public Images() {
 
@@ -126,6 +132,9 @@ public class Images {
         DKJumpLeft = new BufferedImage[8];
         DKLook = new BufferedImage[4];
         DKTurn = new BufferedImage[2];
+        
+        KlapRight = new BufferedImage[4];
+        KlapLeft = new BufferedImage[4];
 
         try {
 
@@ -140,6 +149,8 @@ public class Images {
             SSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/Sheets.png")));
             SAttackSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet2.png")));
             DonkeyKongSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/donkey-kong-2.png")));
+            KlapRight1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap2.png")));
+            KlapLeft1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap.png")));
 
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
@@ -263,6 +274,16 @@ public class Images {
             
             DKTurn[0] = DonkeyKongSheet.crop(214, 546, 29, 30);
             DKTurn[1] = DonkeyKongSheet.crop(187, 546, 29, 30);
+            
+            KlapRight[0] = KlapRight1.crop(0, 0, 31, 16);
+            KlapRight[1] = KlapRight1.crop(32, 0, 31, 16);
+            KlapRight[2] = KlapRight1.crop(64, 0, 31, 16);
+            KlapRight[3] = KlapRight1.crop(96, 0, 32, 18);
+            
+            KlapLeft[3] = KlapRight1.crop(0, 0, 31, 18);
+            KlapLeft[2] = KlapRight1.crop(32, 0, 31, 16);
+            KlapLeft[1] = KlapRight1.crop(64, 0, 31, 16);
+            KlapLeft[0] = KlapRight1.crop(96, 0, 32, 16);
             
             
             

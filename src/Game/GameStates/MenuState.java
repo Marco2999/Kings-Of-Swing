@@ -236,6 +236,10 @@ public class MenuState extends State {
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,0.6f,1), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.donutBlock;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)){ // Klaptrap
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.4f,1,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.klaptrap;
 		}
 
 		if(mouseManager.isLeftPressed() && !clicked){
@@ -265,7 +269,7 @@ public class MenuState extends State {
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H)){
 			JOptionPane.showMessageDialog(display.getFrame(), "Number key <-> Color Mapping: \n" +
 					"0 -> Erase \n" +
-					"1 -> Mario (Red)\n" +
+					"1 -> Donkey Kong (Red)\n" +
 					"2 -> Break Block (Blue)\n" +
 					"3 -> Mystery Block (Yellow)\n" +
 					"4 -> Surface Block (Orange)\n" +
@@ -273,9 +277,10 @@ public class MenuState extends State {
 					"6 -> Mushroom (Purple)\n" +
 					"7 -> Goomba (Brown)\n" +
 					"8 -> Border Block (Orange)\n" +
-					"9 -> Cloud Block\n" +
-					"O -> Beam Block\n" +
-					"P -> Donut Block\n" );
+					"9 -> Cloud Block (Light Gray)\n" +
+					"I -> Beam Block (Magenta)\n" +
+					"O -> Donut Block (Cream)\n" +
+					"P -> Klaptrap (Light Blue)");
 		}
 	}
 	public UIAnimationButton getBut() {

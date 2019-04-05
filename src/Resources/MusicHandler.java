@@ -36,7 +36,7 @@ public class MusicHandler {
 			audioClip = (Clip) AudioSystem.getLine(info);
 			audioClip.open(audioStream);
 
-			if(url.equals("background")){
+			if(url.equals("DKMusic")){
 				audioClip.loop(-1);
 			}else{
 				audioClip.loop(0);
