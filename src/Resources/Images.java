@@ -34,6 +34,9 @@ public class Images {
     public static BufferedImage[] marioBigJumpLeft;//also store ide sprites like looking up or down and left<->right transition
     public static BufferedImage[] marioBigJumpRight;
     
+    public static BufferedImage[] DKFKTaunt;
+    public static BufferedImage[] DKTaunt;
+    
     public static BufferedImage[] DKIdleRight;
     public static BufferedImage[] DKIdleLeft;
     public static BufferedImage[] DKWalkRight;
@@ -100,6 +103,7 @@ public class Images {
     private SpriteSheet SAttackSpriteSheet;
     private SpriteSheet DonkeyKongSheet;
     private SpriteSheet FunkyKongSheet;
+    private SpriteSheet DKFKTauntSheet;
     
     private SpriteSheet KlapRight1;
     private SpriteSheet KlapLeft1;
@@ -134,6 +138,9 @@ public class Images {
         marioBigJumpLeft = new BufferedImage[5];
         marioBigJumpRight = new BufferedImage[5];
         goomba = new BufferedImage[2];
+        
+        DKFKTaunt = new BufferedImage[11];
+        DKTaunt = new BufferedImage[11];
 
         DKIdleRight = new BufferedImage[5];
         DKIdleLeft = new BufferedImage[5];
@@ -173,6 +180,7 @@ public class Images {
             FunkyKongSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/FunkyKongSheet.png")));
             KlapRight1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap2.png")));
             KlapLeft1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap.png")));
+            DKFKTauntSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DKFKTaunt.png")));
 
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
@@ -242,6 +250,31 @@ public class Images {
             marioBigJumpRight[2] = playerSpriteSheet.crop(248,196,15,27);//up
             marioBigJumpRight[3] = playerSpriteSheet.crop(287,122,16,15);//down
             marioBigJumpRight[4] = playerSpriteSheet.crop(368,115,16,29);//Change
+            
+            
+            DKFKTaunt[0] = DKFKTauntSheet.crop(20, 17, 123, 37);
+            DKFKTaunt[1] = DKFKTauntSheet.crop(20, 73, 123, 37);
+            DKFKTaunt[2] = DKFKTauntSheet.crop(20, 115, 123, 37);
+            DKFKTaunt[3] = DKFKTauntSheet.crop(20, 156, 123, 37);
+            DKFKTaunt[4] = DKFKTauntSheet.crop(20, 202, 123, 37);
+            DKFKTaunt[5] = DKFKTauntSheet.crop(20, 246, 123, 37);
+            DKFKTaunt[6] = DKFKTauntSheet.crop(20, 294, 123, 37);
+            DKFKTaunt[7] = DKFKTauntSheet.crop(20, 341, 123, 37);
+            DKFKTaunt[8] = DKFKTauntSheet.crop(20, 387, 123, 37);
+            DKFKTaunt[9] = DKFKTauntSheet.crop(20, 433, 123, 37);
+            DKFKTaunt[10] = DKFKTauntSheet.crop(20, 477, 123, 37);
+            
+            DKTaunt[0] = DKFKTauntSheet.crop(20, 17, 43, 37);
+            DKTaunt[1] = DKFKTauntSheet.crop(20, 73, 43, 37);
+            DKTaunt[2] = DKFKTauntSheet.crop(20, 115, 43, 37);
+            DKTaunt[3] = DKFKTauntSheet.crop(20, 156, 43, 37);
+            DKTaunt[4] = DKFKTauntSheet.crop(20, 202, 43, 37);
+            DKTaunt[5] = DKFKTauntSheet.crop(20, 246, 43, 37);
+            DKTaunt[6] = DKFKTauntSheet.crop(20, 294, 43, 37);
+            DKTaunt[7] = DKFKTauntSheet.crop(20, 341, 43, 37);
+            DKTaunt[8] = DKFKTauntSheet.crop(20, 387, 43, 37);
+            DKTaunt[9] = DKFKTauntSheet.crop(20, 433, 43, 37);
+            DKTaunt[10] = DKFKTauntSheet.crop(20, 477, 43, 37);
             
             
             

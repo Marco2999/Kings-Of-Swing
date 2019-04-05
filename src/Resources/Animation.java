@@ -48,6 +48,9 @@ public class Animation {
     public int getIndex() {
         return index;
     }
+    public void setIndex(int i) {
+    	this.index = i;
+    }
 
     public void reset(){
         index =0;
@@ -55,5 +58,8 @@ public class Animation {
     }
     public void end() {
     	this.index = 0;
+    }
+    public void setLastFrame() {
+    	this.index = this.frames.length-1;
     }
 }
