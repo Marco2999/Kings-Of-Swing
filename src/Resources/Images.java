@@ -43,6 +43,16 @@ public class Images {
     public static BufferedImage[] DKLook;
     public static BufferedImage[] DKTurn;
     
+    public static BufferedImage[] FKIdleRight;
+    public static BufferedImage[] FKIdleLeft;
+    public static BufferedImage[] FKWalkRight;
+    public static BufferedImage[] FKWalkLeft;
+    public static BufferedImage[] FKJumpRight;
+    public static BufferedImage[] FKJumpLeft;
+    public static BufferedImage[] FKLook;
+    public static BufferedImage[] FKTurn;
+    
+    
     
     
     public static BufferedImage[] item;
@@ -84,6 +94,7 @@ public class Images {
     private SpriteSheet SSpriteSheet;
     private SpriteSheet SAttackSpriteSheet;
     private SpriteSheet DonkeyKongSheet;
+    private SpriteSheet FunkyKongSheet;
 
     public Images() {
 
@@ -121,12 +132,23 @@ public class Images {
         DKJumpLeft = new BufferedImage[8];
         DKLook = new BufferedImage[4];
         DKTurn = new BufferedImage[2];
+        
+        
+        FKIdleRight = new BufferedImage[4];
+        FKIdleLeft = new BufferedImage[4];
+        FKWalkRight = new BufferedImage[8];
+        FKWalkLeft = new BufferedImage[8];
+        FKJumpRight = new BufferedImage[8];
+        FKJumpLeft = new BufferedImage[8];
+        FKLook = new BufferedImage[4];
+        FKTurn = new BufferedImage[2];
+        
 
         try {
 
 
             //spriteSheets
-            mainmenuSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/mainmenuSheet.png")));
+            mainmenuSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/NewmainmenuSheet.png")));
             backgroundSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/backgroundSheet.png")));
             interactableSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/interactablesSheet.png")));
             playerSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/marioSNESSheet.png")));
@@ -135,6 +157,7 @@ public class Images {
             SSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/Sheets.png")));
             SAttackSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet2.png")));
             DonkeyKongSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/donkey-kong-2.png")));
+            FunkyKongSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/FunkyKongSheet.png")));
 
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
@@ -258,6 +281,38 @@ public class Images {
             
             DKTurn[0] = DonkeyKongSheet.crop(214, 546, 29, 30);
             DKTurn[1] = DonkeyKongSheet.crop(187, 546, 29, 30);
+            
+            
+            
+            FKIdleRight[0] = FunkyKongSheet.crop(7, 7, 36, 36);
+            FKIdleRight[1] = FunkyKongSheet.crop(49, 7, 36, 36);
+            FKIdleRight[2] = FunkyKongSheet.crop(88, 7, 36, 36);
+            FKIdleRight[3] = FunkyKongSheet.crop(128, 7, 36, 36);
+            
+            FKIdleLeft[0] = FunkyKongSheet.crop(124, 300, 36, 36);
+            FKIdleLeft[1] = FunkyKongSheet.crop(82, 300, 36, 36);
+            FKIdleLeft[2] = FunkyKongSheet.crop(43, 300, 36, 36);
+            FKIdleLeft[3] = FunkyKongSheet.crop(3, 300, 36, 36);
+            
+            FKWalkLeft[0] = FunkyKongSheet.crop(261, 7, 36, 36);
+            FKWalkLeft[1] = FunkyKongSheet.crop(299, 7, 36, 36);
+            FKWalkLeft[2] = FunkyKongSheet.crop(337, 7, 36, 36);
+            FKWalkLeft[3] = FunkyKongSheet.crop(383, 7, 36, 36);
+            FKWalkLeft[4] = FunkyKongSheet.crop(422, 7, 36, 36);
+            FKWalkLeft[5] = FunkyKongSheet.crop(468, 7, 36, 36);
+            FKWalkLeft[6] = FunkyKongSheet.crop(513, 7, 36, 36);
+            FKWalkLeft[7] = FunkyKongSheet.crop(551, 7, 36, 36);
+            
+            FKWalkRight[0] = FunkyKongSheet.crop(291, 387, 36, 36);
+            FKWalkRight[1] = FunkyKongSheet.crop(253, 387, 36, 36);
+            FKWalkRight[2] = FunkyKongSheet.crop(215, 387, 36, 36);
+            FKWalkRight[3] = FunkyKongSheet.crop(169, 387, 36, 36);
+            FKWalkRight[4] = FunkyKongSheet.crop(130, 387, 36, 36);
+            FKWalkRight[5] = FunkyKongSheet.crop(84, 387, 36, 36);
+            FKWalkRight[6] = FunkyKongSheet.crop(39, 387, 36, 36);
+            FKWalkRight[7] = FunkyKongSheet.crop(1, 387, 36, 36);
+            
+            FKJumpRight[0] = FunkyKongSheet.crop(291, 387, 36, 36);
             
             
             

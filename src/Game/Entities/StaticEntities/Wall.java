@@ -78,6 +78,7 @@ public class Wall {
 			for (int i:alf2) { str2+=(char)i;}str2+=" ";
 			for (int i:alf3) { str2+=(char)i;}str2+=" ";
 			for (int i:alf4) { str2+=(char)i;}str2+=" ";
+			
 
 		}
 		if(this.opacity >= 254) this.opacity = 255;
