@@ -22,6 +22,7 @@ public class Mario extends Player{
                 , new Animation(50,Images.DKJumpLeft)
                 , new Animation(50,Images.DKWalkRight)
                 , new Animation(50,Images.DKWalkLeft));
+
 		if(isBig){
 			this.y-=48;
 			this.height+=48;

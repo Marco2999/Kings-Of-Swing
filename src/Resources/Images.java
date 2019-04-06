@@ -34,6 +34,9 @@ public class Images {
     public static BufferedImage[] marioBigJumpLeft;//also store ide sprites like looking up or down and left<->right transition
     public static BufferedImage[] marioBigJumpRight;
     
+    public static BufferedImage[] DKFKTaunt;
+    public static BufferedImage[] DKTaunt;
+    
     public static BufferedImage[] DKIdleRight;
     public static BufferedImage[] DKIdleLeft;
     public static BufferedImage[] DKWalkRight;
@@ -42,6 +45,16 @@ public class Images {
     public static BufferedImage[] DKJumpLeft;
     public static BufferedImage[] DKLook;
     public static BufferedImage[] DKTurn;
+    
+    public static BufferedImage[] FKIdleRight;
+    public static BufferedImage[] FKIdleLeft;
+    public static BufferedImage[] FKWalkRight;
+    public static BufferedImage[] FKWalkLeft;
+    public static BufferedImage[] FKJumpRight;
+    public static BufferedImage[] FKJumpLeft;
+    public static BufferedImage[] FKLook;
+    public static BufferedImage[] FKTurn;
+    
     
     
     public static BufferedImage[] item;
@@ -89,6 +102,8 @@ public class Images {
     private SpriteSheet SSpriteSheet;
     private SpriteSheet SAttackSpriteSheet;
     private SpriteSheet DonkeyKongSheet;
+    private SpriteSheet FunkyKongSheet;
+    private SpriteSheet DKFKTauntSheet;
     
     private SpriteSheet KlapRight1;
     private SpriteSheet KlapLeft1;
@@ -123,6 +138,9 @@ public class Images {
         marioBigJumpLeft = new BufferedImage[5];
         marioBigJumpRight = new BufferedImage[5];
         goomba = new BufferedImage[2];
+        
+        DKFKTaunt = new BufferedImage[11];
+        DKTaunt = new BufferedImage[11];
 
         DKIdleRight = new BufferedImage[5];
         DKIdleLeft = new BufferedImage[5];
@@ -133,6 +151,16 @@ public class Images {
         DKLook = new BufferedImage[4];
         DKTurn = new BufferedImage[2];
         
+        FKIdleRight = new BufferedImage[4];
+        FKIdleLeft = new BufferedImage[4];
+        FKWalkRight = new BufferedImage[8];
+        FKWalkLeft = new BufferedImage[8];
+        FKJumpRight = new BufferedImage[8];
+        FKJumpLeft = new BufferedImage[8];
+        FKLook = new BufferedImage[4];
+        FKTurn = new BufferedImage[2];
+        
+        
         KlapRight = new BufferedImage[4];
         KlapLeft = new BufferedImage[4];
 
@@ -140,7 +168,7 @@ public class Images {
 
 
             //spriteSheets
-            mainmenuSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/mainmenuSheet.png")));
+            mainmenuSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/NewmainmenuSheet.png")));
             backgroundSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/backgroundSheet.png")));
             interactableSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/interactablesSheet.png")));
             playerSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/marioSNESSheet.png")));
@@ -149,8 +177,10 @@ public class Images {
             SSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/Sheets.png")));
             SAttackSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet2.png")));
             DonkeyKongSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/donkey-kong-2.png")));
+            FunkyKongSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/FunkyKongSheet.png")));
             KlapRight1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap2.png")));
             KlapLeft1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap.png")));
+            DKFKTauntSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DKFKTaunt.png")));
 
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
@@ -222,6 +252,31 @@ public class Images {
             marioBigJumpRight[4] = playerSpriteSheet.crop(368,115,16,29);//Change
             
             
+            DKFKTaunt[0] = DKFKTauntSheet.crop(20, 17, 123, 37);
+            DKFKTaunt[1] = DKFKTauntSheet.crop(20, 73, 123, 37);
+            DKFKTaunt[2] = DKFKTauntSheet.crop(20, 115, 123, 37);
+            DKFKTaunt[3] = DKFKTauntSheet.crop(20, 156, 123, 37);
+            DKFKTaunt[4] = DKFKTauntSheet.crop(20, 202, 123, 37);
+            DKFKTaunt[5] = DKFKTauntSheet.crop(20, 246, 123, 37);
+            DKFKTaunt[6] = DKFKTauntSheet.crop(20, 294, 123, 37);
+            DKFKTaunt[7] = DKFKTauntSheet.crop(20, 341, 123, 37);
+            DKFKTaunt[8] = DKFKTauntSheet.crop(20, 387, 123, 37);
+            DKFKTaunt[9] = DKFKTauntSheet.crop(20, 433, 123, 37);
+            DKFKTaunt[10] = DKFKTauntSheet.crop(20, 477, 123, 37);
+            
+            DKTaunt[0] = DKFKTauntSheet.crop(20, 17, 43, 37);
+            DKTaunt[1] = DKFKTauntSheet.crop(20, 73, 43, 37);
+            DKTaunt[2] = DKFKTauntSheet.crop(20, 115, 43, 37);
+            DKTaunt[3] = DKFKTauntSheet.crop(20, 156, 43, 37);
+            DKTaunt[4] = DKFKTauntSheet.crop(20, 202, 43, 37);
+            DKTaunt[5] = DKFKTauntSheet.crop(20, 246, 43, 37);
+            DKTaunt[6] = DKFKTauntSheet.crop(20, 294, 43, 37);
+            DKTaunt[7] = DKFKTauntSheet.crop(20, 341, 43, 37);
+            DKTaunt[8] = DKFKTauntSheet.crop(20, 387, 43, 37);
+            DKTaunt[9] = DKFKTauntSheet.crop(20, 433, 43, 37);
+            DKTaunt[10] = DKFKTauntSheet.crop(20, 477, 43, 37);
+            
+            
             
             DKIdleRight[0] = DonkeyKongSheet.crop(215, 154, 29, 30);
             DKIdleRight[1] = DonkeyKongSheet.crop(243, 154, 29, 30);
@@ -284,6 +339,60 @@ public class Images {
             KlapLeft[1] = KlapLeft1.crop(32, 0, 32, 18);
             KlapLeft[2] = KlapLeft1.crop(64, 0, 32, 18);
             KlapLeft[3] = KlapLeft1.crop(96, 0, 32, 18);
+            
+            
+            
+            FKIdleRight[0] = FunkyKongSheet.crop(7, 7, 36, 36);
+            FKIdleRight[1] = FunkyKongSheet.crop(49, 7, 36, 36);
+            FKIdleRight[2] = FunkyKongSheet.crop(88, 7, 36, 36);
+            FKIdleRight[3] = FunkyKongSheet.crop(128, 7, 36, 36);
+            
+            FKIdleLeft[0] = FunkyKongSheet.crop(124, 300, 36, 36);
+            FKIdleLeft[1] = FunkyKongSheet.crop(82, 300, 36, 36);
+            FKIdleLeft[2] = FunkyKongSheet.crop(43, 300, 36, 36);
+            FKIdleLeft[3] = FunkyKongSheet.crop(3, 300, 36, 36);
+            
+            FKWalkLeft[0] = FunkyKongSheet.crop(261, 7, 36, 36);
+            FKWalkLeft[1] = FunkyKongSheet.crop(299, 7, 36, 36);
+            FKWalkLeft[2] = FunkyKongSheet.crop(337, 7, 36, 36);
+            FKWalkLeft[3] = FunkyKongSheet.crop(383, 7, 36, 36);
+            FKWalkLeft[4] = FunkyKongSheet.crop(422, 7, 36, 36);
+            FKWalkLeft[5] = FunkyKongSheet.crop(468, 7, 36, 36);
+            FKWalkLeft[6] = FunkyKongSheet.crop(513, 7, 36, 36);
+            FKWalkLeft[7] = FunkyKongSheet.crop(551, 7, 36, 36);
+            
+            FKWalkRight[0] = FunkyKongSheet.crop(291, 387, 36, 36);
+            FKWalkRight[1] = FunkyKongSheet.crop(253, 387, 36, 36);
+            FKWalkRight[2] = FunkyKongSheet.crop(215, 387, 36, 36);
+            FKWalkRight[3] = FunkyKongSheet.crop(169, 387, 36, 36);
+            FKWalkRight[4] = FunkyKongSheet.crop(130, 387, 36, 36);
+            FKWalkRight[5] = FunkyKongSheet.crop(84, 387, 36, 36);
+            FKWalkRight[6] = FunkyKongSheet.crop(39, 387, 36, 36);
+            FKWalkRight[7] = FunkyKongSheet.crop(1, 387, 36, 36);
+            
+            FKJumpRight[0] = FunkyKongSheet.crop(325, 345, 36, 36);
+            FKJumpRight[1] = FunkyKongSheet.crop(283, 345, 36, 36);
+            FKJumpRight[2] = FunkyKongSheet.crop(242, 345, 36, 36);
+            FKJumpRight[3] = FunkyKongSheet.crop(191, 345, 36, 36);
+            FKJumpRight[4] = FunkyKongSheet.crop(151, 345, 36, 36);
+            FKJumpRight[5] = FunkyKongSheet.crop(103, 345, 36, 36);
+            FKJumpRight[6] = FunkyKongSheet.crop(55, 345, 36, 36);
+            FKJumpRight[7] = FunkyKongSheet.crop(0, 345, 36, 36);
+            
+            FKJumpLeft[0] = FunkyKongSheet.crop(7, 56, 36, 36);
+            FKJumpLeft[1] = FunkyKongSheet.crop(50, 56, 36, 36);
+            FKJumpLeft[2] = FunkyKongSheet.crop(89, 56, 36, 36);
+            FKJumpLeft[3] = FunkyKongSheet.crop(141, 56, 36, 36);
+            FKJumpLeft[4] = FunkyKongSheet.crop(181, 56, 36, 36);
+            FKJumpLeft[5] = FunkyKongSheet.crop(229, 56, 36, 36);
+            FKJumpLeft[6] = FunkyKongSheet.crop(277, 56, 36, 36);
+            FKJumpLeft[7] = FunkyKongSheet.crop(332, 56, 36, 36);
+            
+            FKLook[0] = FunkyKongSheet.crop(435, 56, 36, 36);
+            FKLook[1] = FunkyKongSheet.crop(57, 429, 36, 36);
+            FKLook[2] = FunkyKongSheet.crop(4, 429, 36, 36);
+            FKLook[3] = FunkyKongSheet.crop(17, 138, 36, 36);
+            
             
             
             

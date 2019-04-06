@@ -11,6 +11,7 @@ import Resources.Images;
 import Display.UI.UIAnimationButton;
 import Display.UI.UIImageButton;
 import Display.UI.UIManager;
+import Display.UI.UIAnimatedHoverButton;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -72,7 +73,7 @@ public class MenuState extends State {
 				State.setState(handler.getGame().gameState);}}, this.handler);
 		uiManager.addObjects(new UIImageButton(handler.getWidth()/2-64, handler.getHeight()/2+(handler.getHeight()/8), 128, 64, Images.butstart, () -> {
 			if(!handler.isInMap()) {
-				mode = "Select";
+				mode = "SelectPlayer";
 			}
 		}));
 	}
@@ -82,7 +83,29 @@ public class MenuState extends State {
 		if(!creatingMap) {
 			handler.getMouseManager().setUimanager(uiManager);
 			uiManager.tick();
-			if (mode.equals("Select")) {
+			if(mode.equals("SelectPlayer")) {
+				mode = "SelectingPlayer";
+				uiManager = new UIManager(handler);
+				handler.getMouseManager().setUimanager(uiManager);
+				uiManager.addObjects(new UIAnimatedHoverButton(handler.getWidth()/4-100, handler.getHeight()/2+(handler.getHeight()/8), 129, 111, Images.DKTaunt, 100, () -> {
+					if(!handler.isInMap()) {
+						mode = "Select1P";
+					}
+				}));
+				uiManager.addObjects(new UIAnimatedHoverButton(handler.getWidth()*1/2-60, handler.getHeight()/2+(handler.getHeight()/8), 369, 111, Images.DKFKTaunt, 100, () -> {
+					if(!handler.isInMap()) {
+						mode = "Select2P";
+					}
+				}));
+				
+				
+				
+				}
+			
+			
+			
+			
+			if (mode.equals("Select1P")) {
 				mode = "Selecting";
 				uiManager = new UIManager(handler);
 				handler.getMouseManager().setUimanager(uiManager);
@@ -141,7 +164,7 @@ public class MenuState extends State {
 				uiManager = new UIManager(handler);
 				handler.getMouseManager().setUimanager(uiManager);
 				uiManager.addObjects(new UIImageButton(handler.getWidth() / 2 - 64, handler.getHeight() / 2 + (handler.getHeight() / 8), 128, 64, Images.butstart, () -> {
-					mode = "Select";
+					mode = "SelectPlayer";
 				}));
 			}
 		}else{
