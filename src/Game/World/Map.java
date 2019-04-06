@@ -76,6 +76,9 @@ public class Map {
             }else if(entity instanceof Goomba && !entity.ded){
                 g2.drawImage(((Goomba)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
             }
+            else if(entity instanceof Klaptrap && !entity.ded){
+                g2.drawImage(((Klaptrap)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+            }
             else if(entity instanceof UIPointer ){
                 ((UIPointer) entity).render(g2);
             }else {

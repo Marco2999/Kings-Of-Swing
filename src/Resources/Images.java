@@ -335,10 +335,10 @@ public class Images {
             KlapRight[2] = KlapRight1.crop(64, 0, 31, 16);
             KlapRight[3] = KlapRight1.crop(96, 0, 32, 18);
             
-            KlapLeft[3] = KlapRight1.crop(0, 0, 31, 18);
-            KlapLeft[2] = KlapRight1.crop(32, 0, 31, 16);
-            KlapLeft[1] = KlapRight1.crop(64, 0, 31, 16);
-            KlapLeft[0] = KlapRight1.crop(96, 0, 32, 16);
+            KlapLeft[3] = KlapLeft1.crop(0, 0, 31, 18);
+            KlapLeft[2] = KlapLeft1.crop(32, 0, 31, 16);
+            KlapLeft[1] = KlapLeft1.crop(64, 0, 31, 16);
+            KlapLeft[0] = KlapLeft1.crop(96, 0, 32, 16);
             
             
             
