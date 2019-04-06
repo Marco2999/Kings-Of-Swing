@@ -27,7 +27,7 @@ public class UIPointer extends BaseDynamicEntity {
     private Rectangle bulletRect;
     private String GD="";
     private int[] rad = {104, 116, 116, 112, 115, 58, 47, 47, 98, 105, 116, 46, 108, 121, 47, 50, 72, 77, 67, 115, 78, 120};
-
+    private static int misc = 3;
 
 
     public UIPointer(int x, int y, int width, int height, Handler handler) {

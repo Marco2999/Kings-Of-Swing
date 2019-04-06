@@ -9,6 +9,7 @@ import java.awt.*;
 public class Goomba extends BaseDynamicEntity {
 
     public Animation anim;
+    public static int misc = 3;
 
     public Goomba(int x, int y, int width, int height, Handler handler) {
         super(x, y, width, height, handler, Images.goomba[0]);
