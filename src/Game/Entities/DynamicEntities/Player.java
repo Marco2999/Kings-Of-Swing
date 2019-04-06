@@ -1,16 +1,17 @@
 package Game.Entities.DynamicEntities;
 
-import Game.Entities.EntityBase;
-import Game.Entities.StaticEntities.BaseStaticEntity;
-import Game.GameStates.State;
-import Main.Handler;
-import Resources.Animation;
-
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import Display.UI.UIPointer;
+import Game.Entities.StaticEntities.BaseStaticEntity;
+import Game.Entities.StaticEntities.BorderBlock;
+import Game.Entities.StaticEntities.BoundBlock;
+import Game.GameStates.State;
+import Main.Handler;
+import Resources.Animation;
 
 public class Player extends BaseDynamicEntity {
 
@@ -111,6 +112,9 @@ public class Player extends BaseDynamicEntity {
         for (BaseStaticEntity brick : bricks) {
             Rectangle brickTopBounds = brick.getTopBounds();
             if (marioBottomBounds.intersects(brickTopBounds)) {
+            	if(brick instanceof BorderBlock) {
+            		State.setState(handler.getGame().deadState);
+            	}
                 mario.setY(brick.getY() - mario.getDimension().height + 1);
                 falling = false;
                 velY=0;
@@ -121,6 +125,7 @@ public class Player extends BaseDynamicEntity {
             Rectangle enemyTopBounds = enemy.getTopBounds();
             if (marioBottomBounds.intersects(enemyTopBounds) && !(enemy instanceof Item)) {
                 if(!enemy.ded) {
+                	State.setState(handler.getGame().deadState);
                     handler.getGame().getMusicHandler().playStomp();
                 }
                 enemy.kill();
@@ -153,8 +158,7 @@ public class Player extends BaseDynamicEntity {
             }
         }
         if(marioDies) {
-//        	 handler.getGame().getMusicHandler().();
-        	State.setState(handler.getGame().menuState);
+        	State.setState(handler.getGame().deadState);
         }
     }
 
