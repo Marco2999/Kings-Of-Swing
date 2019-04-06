@@ -85,8 +85,10 @@ public class Player extends BaseDynamicEntity {
         for (BaseDynamicEntity entity : handler.getMap().getEnemiesOnMap()) {
             if (entity != null && getBounds().intersects(entity.getBounds()) && entity instanceof Item && !isBig) {
                 isBig = true;
-                this.y -= 8;
-                this.height += 8;
+                this.y -= 48;
+                this.height += 48;
+                this.x -= 48;
+                this.width +=48;
                 setDimension(new Dimension(width, this.height));
                 ((Item) entity).used = true;
                 entity.y = -100000;
@@ -123,7 +125,8 @@ public class Player extends BaseDynamicEntity {
                 }
                 enemy.kill();
                 falling=false;
-                velY=0;
+                jumping=true;
+                velY=5;
 
             }
         }

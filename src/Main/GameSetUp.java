@@ -27,6 +27,7 @@ import java.awt.image.BufferStrategy;
 
 public class GameSetUp implements Runnable {
     public DisplayScreen display;
+    public DisplayScreen display2;
     public String title;
 
     private boolean running = false;
@@ -137,7 +138,7 @@ public class GameSetUp implements Runnable {
     private void tick(){
         //checks for key types and manages them
         keyManager.tick();
-
+        	
         if(musicHandler.ended()){
             musicHandler.restartBackground();
         }
@@ -150,7 +151,6 @@ public class GameSetUp implements Runnable {
         }
 
     }
-
     private void updateCamera() {
         Player mario = handler.getMario();
         double marioVelocityX = mario.getVelX();

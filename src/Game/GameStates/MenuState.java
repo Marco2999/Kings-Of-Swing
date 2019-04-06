@@ -34,6 +34,7 @@ public class MenuState extends State {
 	private String mode= "Menu";
 
 	private DisplayScreen display;
+	private DisplayScreen displayP2;
 	private int[] str={83,117,98,32,116,111,32,80,101,119,100,115};
 	private String str2="";
 
@@ -50,6 +51,7 @@ public class MenuState extends State {
 	private KeyManager keyManager;
 	private MouseManager mouseManager;
 	private boolean clicked = true;
+	public boolean P2Select = false;
 
 	public MenuState(Handler handler) {
 		super(handler);
@@ -159,6 +161,27 @@ public class MenuState extends State {
 				}, handler,Color.BLACK));
 				uiManager.addObjects(this.but);
 			}
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+			if (mode.equals("Select2P")) {
+				mode = "Selecting";
+				uiManager = new UIManager(handler);
+				handler.getMouseManager().setUimanager(uiManager);
+				displayP2 = new DisplayScreen("P2", handler.getWidth(), handler.getHeight());
+				displayP2.getFrame().addKeyListener(keyManager);
+		        displayP2.getFrame().addMouseListener(mouseManager);
+		        displayP2.getFrame().addMouseMotionListener(mouseManager);
+		        displayP2.getCanvas().addMouseListener(mouseManager);
+		        displayP2.getCanvas().addMouseMotionListener(mouseManager);
+				//New Map
+				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) - (64), 128, 64, "New Map", () -> {
+					if(!handler.isInMap()) {
+						mode = "Menu";
+						initNew("New Map Creator", handler);
+					}
+				}, handler,Color.BLACK));
+			
+			}
 			if (mode.equals("Selecting") && handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE) && (!handler.isInMap())) {
 				mode = "Menu";
 				uiManager = new UIManager(handler);
@@ -199,7 +222,7 @@ public class MenuState extends State {
 		Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,0,0), new Point(0, 0), "cursor1");
 		display.getCanvas().setCursor(c);
 	}
-
+	
 	private void tickNewScreen(){
 		//for the tin take each value and divide by 255.
 		//Ex for a red tint you wan the RGB : 255,0,0 so the tint is 1,0,0
@@ -387,6 +410,10 @@ public class MenuState extends State {
 			System.out.println("Error: " + e);
 		}
 		return img;
+	}
+	
+	public boolean getP2Select(){
+		return P2Select;
 	}
 
 }
