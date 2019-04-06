@@ -6,19 +6,31 @@ import Resources.Images;
 
 import java.awt.*;
 
+import com.sun.corba.se.impl.presentation.rmi.DynamicAccessPermission;
+
 public class Klaptrap extends BaseDynamicEntity {
 
     public Animation anim;
-
+    public Animation right;
+    public Animation left;
+    
     public Klaptrap(int x, int y, int width, int height, Handler handler) {
-        super(x, y, width, height, handler, Images.KlapRight[0]);
-//        		, new Animation(50, Images.KlapLeft[4]));
+        super(x, y, 65, height, handler, Images.KlapRight[0]);
         anim = new Animation(50,Images.KlapRight);
+        right = new Animation(50, Images.KlapRight);
+		left = new Animation(50, Images.KlapLeft);
     }
-
+    
     @Override
     public void tick(){
         if(!ded && dedCounter==0) {
+        	
+        	if(this.direction == "Right") {
+        		anim = right;
+        	}else if(this.direction == "Left") {
+        		anim = left;
+        	}
+        	
             super.tick();
             anim.tick();
             if (falling) {
@@ -39,9 +51,12 @@ public class Klaptrap extends BaseDynamicEntity {
         }
     }
 
-    @Override
+
+	@Override
     public void kill() {
         sprite = Images.goombaDies;
         ded=true;
     }
+    
+
 }

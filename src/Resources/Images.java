@@ -275,15 +275,15 @@ public class Images {
             DKTurn[0] = DonkeyKongSheet.crop(214, 546, 29, 30);
             DKTurn[1] = DonkeyKongSheet.crop(187, 546, 29, 30);
             
-            KlapRight[0] = KlapRight1.crop(0, 0, 31, 16);
-            KlapRight[1] = KlapRight1.crop(32, 0, 31, 16);
-            KlapRight[2] = KlapRight1.crop(64, 0, 31, 16);
-            KlapRight[3] = KlapRight1.crop(96, 0, 32, 18);
+            KlapRight[3] = KlapRight1.crop(0, 0, 32, 18);
+            KlapRight[2] = KlapRight1.crop(32, 0, 32, 18);
+            KlapRight[1] = KlapRight1.crop(64, 0, 32, 18);
+            KlapRight[0] = KlapRight1.crop(96, 0, 32, 18);
             
-            KlapLeft[3] = KlapRight1.crop(0, 0, 31, 18);
-            KlapLeft[2] = KlapRight1.crop(32, 0, 31, 16);
-            KlapLeft[1] = KlapRight1.crop(64, 0, 31, 16);
-            KlapLeft[0] = KlapRight1.crop(96, 0, 32, 16);
+            KlapLeft[0] = KlapLeft1.crop(0, 0, 32, 18);
+            KlapLeft[1] = KlapLeft1.crop(32, 0, 32, 18);
+            KlapLeft[2] = KlapLeft1.crop(64, 0, 32, 18);
+            KlapLeft[3] = KlapLeft1.crop(96, 0, 32, 18);
             
             
             

@@ -23,6 +23,8 @@ public class Player extends BaseDynamicEntity {
     public boolean falling = true, jumping = false,isBig=false,running = false,changeDirrection=false;
     public double gravityAcc = 0.38;
     int changeDirectionCounter=0;
+    
+    public static int misc = 3;
 
     public Player(int x, int y, int width, int height, Handler handler, BufferedImage sprite,Animation PLA,Animation PRA,Animation PIRA,
             Animation PILA, Animation PJRA, Animation PJLA, Animation PRRA, Animation PRLA) {
