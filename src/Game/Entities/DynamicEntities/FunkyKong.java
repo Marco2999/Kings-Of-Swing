@@ -34,12 +34,12 @@ public class FunkyKong extends Player{
 		if(!grabbed) {
 			super.tick();
 			if (!this.hit) {
-				if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_SPACE) && !handler.getKeyManager().up && !handler.getKeyManager().down) {
+				if (handler.getKeyManager().jumpbutt2 && !handler.getKeyManager().up && !handler.getKeyManager().down) {
 					this.jump();
 				}
 
-				if (handler.getKeyManager().right && !handler.getKeyManager().up && !handler.getKeyManager().down) {
-					if (handler.getKeyManager().runbutt) {
+				if (handler.getKeyManager().right2 && !handler.getKeyManager().up2 && !handler.getKeyManager().down2) {
+					if (handler.getKeyManager().runbutt2) {
 						velX = 6;
 						running = true;
 					} else {
@@ -51,7 +51,7 @@ public class FunkyKong extends Player{
 					}
 					facing = "Right";
 					moving = true;
-				} else if (handler.getKeyManager().left && !handler.getKeyManager().up && !handler.getKeyManager().down) {
+				} else if (handler.getKeyManager().left2 && !handler.getKeyManager().up2 && !handler.getKeyManager().down2) {
 					if (handler.getKeyManager().runbutt) {
 						velX = -6;
 						running = true;
