@@ -19,6 +19,7 @@ public class Map {
     ArrayList<BaseStaticEntity> blocksOnMap;
     ArrayList<BaseStaticEntity> bordersOnMap;
     ArrayList<BaseDynamicEntity> enemiesOnMap;
+    ArrayList<BaseDynamicEntity> playersOnMap;
     Handler handler;
     private double bottomBorder;
     private UIListener listener;
@@ -36,6 +37,7 @@ public class Map {
         this.blocksOnMap = new ArrayList<>();
         this.bordersOnMap = new ArrayList<>();
         this.enemiesOnMap = new ArrayList<>();
+        this.playersOnMap = new ArrayList<>();
         bottomBorder=handler.getHeight();
         this.mapBackground = this.rand.nextInt(6);
     }
@@ -49,11 +51,19 @@ public class Map {
     public void addEnemy(BaseDynamicEntity entity){
         if(entity instanceof Mario){
             handler.setMario((Mario) entity);
+            playersOnMap.add(entity);
             handler.getCamera().setX(handler.getMario().x- (MapBuilder.pixelMultiplier*6));
             handler.getCamera().setY(handler.getMario().y - (MapBuilder.pixelMultiplier*10));
             bottomBorder=handler.getHeight()+handler.getMario().y;
+        }else if(entity instanceof FunkyKong){
+            handler.setFunkyKong((FunkyKong) entity);
+            playersOnMap.add(entity);
+          //  handler.getCamera().setX(handler.getMario().x- (MapBuilder.pixelMultiplier*6));
+          //  handler.getCamera().setY(handler.getMario().y - (MapBuilder.pixelMultiplier*10));
+            //bottomBorder=handler.getHeight()+handler.getMario().y;
         }else {
             enemiesOnMap.add(entity);
+
         }
     }
 
@@ -77,17 +87,22 @@ public class Map {
                 g2.drawImage(((Goomba)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
             }else if(entity instanceof Klaptrap && !entity.ded){
                 g2.drawImage(((Klaptrap)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
-            }
-            else if(entity instanceof Klaptrap && !entity.ded){
+            }else if(entity instanceof Klaptrap && !entity.ded){
                 g2.drawImage(((Klaptrap)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
-            }
-            else if(entity instanceof UIPointer ){
+            }else if(entity instanceof UIPointer ){
                 ((UIPointer) entity).render(g2);
             }else {
                 g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
             }
         }
-        handler.getMario().drawMario(g2);
+        for(BaseDynamicEntity entity:playersOnMap) {
+        	if(entity instanceof Mario) {
+        		handler.getMario().drawMario(g2);
+        	}
+        	else if(entity instanceof FunkyKong) {
+        		handler.getFunkyKong().drawFK(g2);
+        	}
+        }
         if(this.listener != null && MapBuilder.mapDone) {
             this.listener.render(g2);
             this.hand.render(g2);
@@ -107,6 +122,10 @@ public class Map {
         return enemiesOnMap;
     }
 
+    public ArrayList<BaseDynamicEntity> getPlayersOnMap() {
+        return playersOnMap;
+    }
+    
     public double getBottomBorder() {
         return bottomBorder;
     }

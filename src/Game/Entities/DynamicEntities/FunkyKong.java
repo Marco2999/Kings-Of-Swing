@@ -34,7 +34,7 @@ public class FunkyKong extends Player{
 		if(!grabbed) {
 			super.tick();
 			if (!this.hit) {
-				if (handler.getKeyManager().jumpbutt2 && !handler.getKeyManager().up && !handler.getKeyManager().down) {
+				if (handler.getKeyManager().jumpbutt2 && !handler.getKeyManager().up2 && !handler.getKeyManager().down2) {
 					this.jump();
 				}
 
@@ -52,7 +52,7 @@ public class FunkyKong extends Player{
 					facing = "Right";
 					moving = true;
 				} else if (handler.getKeyManager().left2 && !handler.getKeyManager().up2 && !handler.getKeyManager().down2) {
-					if (handler.getKeyManager().runbutt) {
+					if (handler.getKeyManager().runbutt2) {
 						velX = -6;
 						running = true;
 					} else {
@@ -88,21 +88,21 @@ public class FunkyKong extends Player{
 		}
 	}
 
-	public void drawMario(Graphics2D g2) {
+	public void drawFK(Graphics2D g2) {
 		if(!grabbed) {
 
 			if (!changeDirrection) {
-				if (handler.getKeyManager().up) {
+				if (handler.getKeyManager().up2) {
 					if (facing.equals("Left")) {
-						g2.drawImage(Images.DKLook[1], x, y, width, height, null);
+						g2.drawImage(Images.FKLook[1], x, y, width, height, null);
 					} else {
-						g2.drawImage(Images.DKLook[0], x, y, width, height, null);
+						g2.drawImage(Images.FKLook[0], x, y, width, height, null);
 					}
-				} else if (handler.getKeyManager().down) {
+				} else if (handler.getKeyManager().down2) {
 					if (facing.equals("Left")) {
-						g2.drawImage(Images.DKLook[3], x, y, width, height, null);
+						g2.drawImage(Images.FKLook[3], x, y, width, height, null);
 					} else {
-						g2.drawImage(Images.DKLook[2], x, y, width, height, null);
+						g2.drawImage(Images.FKLook[2], x, y, width, height, null);
 					}
 				} else if (!jumping && !falling) {
 					if (facing.equals("Left") && moving && running) {
@@ -138,7 +138,7 @@ public class FunkyKong extends Player{
 				if (!running) {
 					changeDirrection = false;
 					changeDirectionCounter = 0;
-					drawMario(g2);
+					drawFK(g2);
 				}
 				if (facing.equals("Right")) {
 					g2.drawImage(Images.DKTurn[0], x, y, width, height, null);

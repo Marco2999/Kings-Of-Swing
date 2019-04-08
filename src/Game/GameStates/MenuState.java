@@ -34,7 +34,6 @@ public class MenuState extends State {
 	private String mode= "Menu";
 
 	private DisplayScreen display;
-	private DisplayScreen displayP2;
 	private int[] str={83,117,98,32,116,111,32,80,101,119,100,115};
 	private String str2="";
 
@@ -51,7 +50,6 @@ public class MenuState extends State {
 	private KeyManager keyManager;
 	private MouseManager mouseManager;
 	private boolean clicked = true;
-	public boolean P2Select = false;
 
 	public MenuState(Handler handler) {
 		super(handler);
@@ -167,12 +165,7 @@ public class MenuState extends State {
 				mode = "Selecting";
 				uiManager = new UIManager(handler);
 				handler.getMouseManager().setUimanager(uiManager);
-				displayP2 = new DisplayScreen("P2", handler.getWidth(), handler.getHeight());
-				displayP2.getFrame().addKeyListener(keyManager);
-		        displayP2.getFrame().addMouseListener(mouseManager);
-		        displayP2.getFrame().addMouseMotionListener(mouseManager);
-		        displayP2.getCanvas().addMouseListener(mouseManager);
-		        displayP2.getCanvas().addMouseMotionListener(mouseManager);
+
 				//New Map
 				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) - (64), 128, 64, "New Map", () -> {
 					if(!handler.isInMap()) {
@@ -286,8 +279,11 @@ public class MenuState extends State {
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.4f,1,1), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.klaptrap;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_Q)){ // FunkyKong
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.4f,1,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.funkykong;
 		}
-
 		if(mouseManager.isLeftPressed() && !clicked){
 			int posX =mouseManager.getMouseX()/GridPixelsize;
 			int posY =mouseManager.getMouseY()/GridPixelsize;
@@ -411,9 +407,6 @@ public class MenuState extends State {
 		}
 		return img;
 	}
-	
-	public boolean getP2Select(){
-		return P2Select;
-	}
+
 
 }

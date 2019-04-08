@@ -1,6 +1,7 @@
 package Main;
 
 import Game.Entities.DynamicEntities.Mario;
+import Game.Entities.DynamicEntities.FunkyKong;
 import Game.World.Map;
 import Input.Camera;
 import Input.KeyManager;
@@ -23,6 +24,7 @@ public class Handler {
 
     private GameSetUp game;
     private Mario mario;
+    private FunkyKong FK;
     private Map map;
     private boolean marioInMap =false;
 
@@ -68,6 +70,12 @@ public class Handler {
 
     public void setMario(Mario mario) {
         this.mario = mario;
+    }
+    public FunkyKong getFunkyKong() {
+    	return FK;
+    }
+    public void setFunkyKong(FunkyKong FK) {
+    	this.FK = FK;
     }
 
     public Map getMap() {

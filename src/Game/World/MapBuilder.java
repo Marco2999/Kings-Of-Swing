@@ -1,6 +1,7 @@
 package Game.World;
 
 import Game.Entities.DynamicEntities.BaseDynamicEntity;
+import Game.Entities.DynamicEntities.FunkyKong;
 import Game.Entities.DynamicEntities.Goomba;
 import Game.Entities.DynamicEntities.Klaptrap;
 import Game.Entities.DynamicEntities.Mario;
@@ -28,6 +29,7 @@ public class MapBuilder {
 	public static int beamBlock = new Color(255,0,127).getRGB(); // Magenta
 	public static int donutBlock = new Color(255,178,102).getRGB(); // Light Orange
 	public static int klaptrap = new Color(102,255,255).getRGB(); // Baby Blue
+	public static int funkykong = new Color(130,35,0).getRGB(); // Baby Blue
 	public static boolean mapDone = false;
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
@@ -73,6 +75,9 @@ public class MapBuilder {
 				}else if(currentPixel == klaptrap){
 					BaseDynamicEntity Klaptrap = new Klaptrap(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Klaptrap);
+				}else if(currentPixel == funkykong){
+					BaseDynamicEntity FunkyKong = new FunkyKong(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addEnemy(FunkyKong);
 				}
 			}
 

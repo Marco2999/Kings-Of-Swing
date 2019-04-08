@@ -10,6 +10,7 @@ import java.awt.*;
 public abstract class State {
 
     private static State currentState = null;
+    private static boolean P2 = false;
 
     public static void setState(State state){
         currentState = state;
@@ -17,6 +18,14 @@ public abstract class State {
 
     public static State getState(){
         return currentState;
+    }
+    
+    public static void setP2(boolean b) {
+    	P2 = b;
+    }
+    
+    public static boolean getP2() {
+    	return P2;
     }
 
     //CLASS
