@@ -39,6 +39,7 @@ public abstract class State {
     public abstract void tick();
 
     public abstract void render(Graphics g);
+    public abstract void renderP2(Graphics g);
 
 }
 

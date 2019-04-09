@@ -28,15 +28,18 @@ import java.awt.image.BufferStrategy;
 
 public class GameSetUp implements Runnable {
     public DisplayScreen display;
-    public DisplayScreen display2;
+    public DisplayScreen displayP2;
     public String title;
 
     private boolean running = false;
+    private boolean createdP2 = false;
     private Thread thread;
     public static boolean threadB;
 
     private BufferStrategy bs;
+    private BufferStrategy bsP2;
     private Graphics g;
+    private Graphics gP2;
     public UIPointer pointer;
 
     //Input
@@ -75,6 +78,7 @@ public class GameSetUp implements Runnable {
         display.getFrame().addMouseMotionListener(mouseManager);
         display.getCanvas().addMouseListener(mouseManager);
         display.getCanvas().addMouseMotionListener(mouseManager);
+        handler.setCameraP2(new Camera());
 
         Images img = new Images();
 
@@ -125,6 +129,9 @@ public class GameSetUp implements Runnable {
                 //re-renders and ticks the game around 60 times per second
                 tick();
                 render();
+                if(createdP2) {
+                	renderP2();
+                }
                 ticks++;
                 delta--;
             }
@@ -151,6 +158,18 @@ public class GameSetUp implements Runnable {
             State.getState().tick();
         if (handler.isInMap()) {
             updateCamera();
+            if(createdP2) {
+            	updateCameraP2();
+            }
+        }
+        if(State.getP2() && !createdP2) {
+        	displayP2 = new DisplayScreen("Player 2", handler.width, handler.height);
+        	displayP2.getFrame().addKeyListener(keyManager);
+            displayP2.getFrame().addMouseListener(mouseManager);
+            displayP2.getFrame().addMouseMotionListener(mouseManager);
+            displayP2.getCanvas().addMouseListener(mouseManager);
+            displayP2.getCanvas().addMouseMotionListener(mouseManager);
+            createdP2 = true;
         }
 
     }
@@ -175,6 +194,28 @@ public class GameSetUp implements Runnable {
         }
         handler.getCamera().moveCam(shiftAmount,shiftAmountY);
     }
+    
+    private void updateCameraP2() {
+        Player FunkyKong = handler.getFunkyKong();
+        double FunkyKongVelocityX = FunkyKong.getVelX();
+        double FunkyKongVelocityY = FunkyKong.getVelY();
+        double shiftAmount = 0;
+        double shiftAmountY = 0;
+
+        if (FunkyKongVelocityX > 0 && FunkyKong.getX() - 2*(handler.getWidth()/3) > handler.getCameraP2().getX()) {
+            shiftAmount = FunkyKongVelocityX;
+        }
+        if (FunkyKongVelocityX < 0 && FunkyKong.getX() +  2*(handler.getWidth()/3) < handler.getCameraP2().getX()+handler.width) {
+            shiftAmount = FunkyKongVelocityX;
+        }
+        if (FunkyKongVelocityY > 0 && FunkyKong.getY() - 2*(handler.getHeight()/3) > handler.getCameraP2().getY()) {
+            shiftAmountY = FunkyKongVelocityY;
+        }
+        if (FunkyKongVelocityX < 0 && FunkyKong.getY() +  2*(handler.getHeight()/3) < handler.getCameraP2().getY()+handler.height) {
+            shiftAmountY = -FunkyKongVelocityY;
+        }
+        handler.getCameraP2().moveCam(shiftAmount,shiftAmountY);
+    }
 
     private void render(){
         bs = display.getCanvas().getBufferStrategy();
@@ -197,6 +238,31 @@ public class GameSetUp implements Runnable {
         bs.show();
         g.dispose();
     }
+    private void renderP2(){
+        bsP2 = displayP2.getCanvas().getBufferStrategy();
+
+        if(bsP2 == null){
+            displayP2.getCanvas().createBufferStrategy(3);
+            return;
+        }
+        gP2 = bsP2.getDrawGraphics();
+        //Clear Screen
+        gP2.clearRect(0, 0,  handler.width, handler.height);
+
+        //Draw Here!
+        Graphics2D g2 = (Graphics2D) gP2.create();
+
+        if(State.getState() != null)
+            State.getState().renderP2(gP2);
+
+        //End Drawing!
+        bsP2.show();
+        gP2.dispose();
+    }
+    
+    
+    
+    
     public Map getMap() {
     	Map map = new Map(this.handler);
     	Images.makeMap(0, MapBuilder.pixelMultiplier, 31, 200, map, this.handler);

@@ -42,4 +42,9 @@ public class DeadState extends State {
         g.drawImage(Images.Pause,0,0,handler.getWidth(),handler.getHeight(),null);
         uiManager.Render(g);
     }
+    @Override
+    public void renderP2(Graphics g) {
+        g.drawImage(Images.Pause,0,0,handler.getWidth(),handler.getHeight(),null);
+        uiManager.Render(g);
+    }
 }

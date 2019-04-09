@@ -58,9 +58,9 @@ public class Map {
         }else if(entity instanceof FunkyKong){
             handler.setFunkyKong((FunkyKong) entity);
             playersOnMap.add(entity);
-          //  handler.getCamera().setX(handler.getMario().x- (MapBuilder.pixelMultiplier*6));
-          //  handler.getCamera().setY(handler.getMario().y - (MapBuilder.pixelMultiplier*10));
-            //bottomBorder=handler.getHeight()+handler.getMario().y;
+            handler.getCameraP2().setX(handler.getFunkyKong().x- (MapBuilder.pixelMultiplier*6));
+            handler.getCameraP2().setY(handler.getFunkyKong().y - (MapBuilder.pixelMultiplier*10));
+            bottomBorder=handler.getHeight()+handler.getFunkyKong().y;
         }else {
             enemiesOnMap.add(entity);
 
@@ -111,6 +111,52 @@ public class Map {
         g2.translate(camLocation.x, camLocation.y);
     }
 
+    public void drawMapP2(Graphics2D g2) {
+        handler.setIsInMap(true);
+        Point camLocation = new Point((int)handler.getCameraP2().getX(), (int)handler.getCameraP2().getY());
+        g2.translate(-camLocation.x, -camLocation.y);
+        g2.drawImage(Images.backgrounds2[this.mapBackground], camLocation.x, camLocation.y, this.handler.getWidth(), this.handler.getHeight(),null);
+        for (BaseStaticEntity block:blocksOnMap) {
+            g2.drawImage(block.sprite,block.x,block.y,block.width,block.height,null);
+        }
+        for (BaseStaticEntity block:bordersOnMap) {
+            g2.drawImage(block.sprite,block.x,block.y,block.width,block.height,null);
+        }
+        for (BaseDynamicEntity entity:enemiesOnMap) {
+            if(entity instanceof Item){
+                if(!((Item)entity).used){
+                    g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
+                }
+            }else if(entity instanceof Goomba && !entity.ded){
+                g2.drawImage(((Goomba)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+            }else if(entity instanceof Klaptrap && !entity.ded){
+                g2.drawImage(((Klaptrap)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+            }else if(entity instanceof Klaptrap && !entity.ded){
+                g2.drawImage(((Klaptrap)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+            }else if(entity instanceof UIPointer ){
+                ((UIPointer) entity).render(g2);
+            }else {
+                g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
+            }
+        }
+        for(BaseDynamicEntity entity:playersOnMap) {
+        	if(entity instanceof Mario) {
+        		handler.getMario().drawMario(g2);
+        	}
+        	else if(entity instanceof FunkyKong) {
+        		handler.getFunkyKong().drawFK(g2);
+        	}
+        }
+        if(this.listener != null && MapBuilder.mapDone) {
+            this.listener.render(g2);
+            this.hand.render(g2);
+            this.walls.render(g2);
+        }
+        g2.translate(camLocation.x, camLocation.y);
+    }    
+    
+    
+    
     public ArrayList<BaseStaticEntity> getBlocksOnMap() {
         return blocksOnMap;
     }

@@ -165,6 +165,7 @@ public class MenuState extends State {
 				mode = "Selecting";
 				uiManager = new UIManager(handler);
 				handler.getMouseManager().setUimanager(uiManager);
+				State.setP2(true);
 
 				//New Map
 				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) - (64), 128, 64, "New Map", () -> {
@@ -372,6 +373,7 @@ public class MenuState extends State {
 		// Create buffered image object
 		BufferedImage img = null;
 		MapBuilder.mapDone=false;
+		System.out.println(str2);
 		if(name.equals(str2)) MapBuilder.mapDone = true;
 		img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
@@ -406,6 +408,12 @@ public class MenuState extends State {
 			System.out.println("Error: " + e);
 		}
 		return img;
+	}
+
+	@Override
+	public void renderP2(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

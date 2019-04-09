@@ -47,5 +47,10 @@ public class GameState extends State {
 		Graphics2D g2 = (Graphics2D) g.create();
 		handler.getMap().drawMap(g2);
 	}
-
+	public void renderP2(Graphics g) {
+		Graphics2D g2 = (Graphics2D) g.create();
+		handler.getMap().drawMapP2(g2);
+	}
+	
+	
 }

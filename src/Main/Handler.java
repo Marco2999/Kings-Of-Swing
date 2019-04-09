@@ -29,7 +29,7 @@ public class Handler {
     private boolean marioInMap =false;
 
     private Camera camera;
-
+    private Camera cameraP2;
 
     public Handler(){
 
@@ -101,4 +101,15 @@ public class Handler {
     public void setCamera(Camera camera) {
         this.camera = camera;
     }
+
+    public Camera getCameraP2() {
+        return cameraP2;
+    }
+
+    public void setCameraP2(Camera camera) {
+        this.cameraP2 = camera;
+    }
+    
+    
+    
 }
