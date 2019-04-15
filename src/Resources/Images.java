@@ -104,13 +104,22 @@ public class Images {
     private SpriteSheet DonkeyKongSheet;
     private SpriteSheet FunkyKongSheet;
     private SpriteSheet DKFKTauntSheet;
+    private SpriteSheet FontsSheet;
     
     private SpriteSheet KlapRight1;
     private SpriteSheet KlapLeft1;
 
     public static BufferedImage[] KlapLeft;
     public static BufferedImage[] KlapRight;
-
+    
+    
+    
+    public static BufferedImage ready;
+    public static BufferedImage go;
+    public static BufferedImage goal;
+    
+    
+    
     public Images() {
 
         butstart = new BufferedImage[3];
@@ -181,7 +190,8 @@ public class Images {
             KlapRight1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap2.png")));
             KlapLeft1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap.png")));
             DKFKTauntSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DKFKTaunt.png")));
-
+            FontsSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DK Font.png")));
+            
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
             Pause = ImageIO.read(getClass().getResourceAsStream("/Sheets/Pause.png"));
@@ -393,6 +403,13 @@ public class Images {
             FKLook[2] = FunkyKongSheet.crop(4, 429, 36, 36);
             FKLook[3] = FunkyKongSheet.crop(17, 138, 36, 36);
             
+            FKTurn[0] = FunkyKongSheet.crop(176, 300, 36, 36);
+            FKTurn[1] = FunkyKongSheet.crop(171, 7, 36, 36);
+            
+            
+            ready = FontsSheet.crop(17, 349, 103, 35);
+            go = FontsSheet.crop(29, 387, 77, 33);
+            goal = FontsSheet.crop(12, 428, 114, 33);
             
             
             

@@ -56,6 +56,13 @@ public class GameSetUp implements Runnable {
     public State pauseState;
     public State deadState;
     
+    
+    
+    
+    GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    int screenWidth = gd.getDisplayMode().getWidth();
+    int screenHeight = gd.getDisplayMode().getHeight();
+    
     //Res.music
     private MusicHandler musicHandler;
 
@@ -69,6 +76,8 @@ public class GameSetUp implements Runnable {
         initialmouseManager = mouseManager;
         musicHandler = new MusicHandler(handler);
         handler.setCamera(new Camera());
+        handler.setCameraP2(new Camera());
+        
     }
 
     private void init(){
@@ -78,8 +87,7 @@ public class GameSetUp implements Runnable {
         display.getFrame().addMouseMotionListener(mouseManager);
         display.getCanvas().addMouseListener(mouseManager);
         display.getCanvas().addMouseMotionListener(mouseManager);
-        handler.setCameraP2(new Camera());
-
+        
         Images img = new Images();
 
         musicHandler.restartBackground();
@@ -164,6 +172,8 @@ public class GameSetUp implements Runnable {
         }
         if(State.getP2() && !createdP2) {
         	displayP2 = new DisplayScreen("Player 2", handler.width, handler.height);
+        	display.getFrame().setLocation(screenWidth/2-handler.getWidth(), screenHeight/2-handler.getHeight()/2);
+        	displayP2.getFrame().setLocation(screenWidth/2, screenHeight/2-handler.getHeight()/2);
         	displayP2.getFrame().addKeyListener(keyManager);
             displayP2.getFrame().addMouseListener(mouseManager);
             displayP2.getFrame().addMouseMotionListener(mouseManager);
