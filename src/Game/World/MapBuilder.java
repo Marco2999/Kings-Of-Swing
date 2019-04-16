@@ -1,18 +1,27 @@
 package Game.World;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+
+import Game.Entities.DynamicEntities.Banana;
+import Game.Entities.DynamicEntities.BananaBunch;
 import Game.Entities.DynamicEntities.BaseDynamicEntity;
 import Game.Entities.DynamicEntities.FunkyKong;
 import Game.Entities.DynamicEntities.Goomba;
 import Game.Entities.DynamicEntities.Klaptrap;
 import Game.Entities.DynamicEntities.Mario;
 import Game.Entities.DynamicEntities.Mushroom;
-import Game.Entities.StaticEntities.*;
+import Game.Entities.StaticEntities.BaseStaticEntity;
+import Game.Entities.StaticEntities.BeamBlock;
+import Game.Entities.StaticEntities.BorderBlock;
+import Game.Entities.StaticEntities.BoundBlock;
+import Game.Entities.StaticEntities.BreakBlock;
+import Game.Entities.StaticEntities.CloudBlock;
+import Game.Entities.StaticEntities.DonutBlock;
+import Game.Entities.StaticEntities.MisteryBlock;
+import Game.Entities.StaticEntities.SurfaceBlock;
 import Main.Handler;
 import Resources.Images;
-import javafx.scene.layout.Border;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class MapBuilder {
 
@@ -30,6 +39,8 @@ public class MapBuilder {
 	public static int donutBlock = new Color(255,178,102).getRGB(); // Light Orange
 	public static int klaptrap = new Color(102,255,255).getRGB(); // Baby Blue
 	public static int funkykong = new Color(130,35,0).getRGB(); // Baby Blue
+	public static int smallbanana = new Color(255, 255,0).getRGB(); // Bright Yellow
+	public static int bigbanana = new Color(204, 204,0).getRGB(); // Dark yellow
 	public static boolean mapDone = false;
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
@@ -78,6 +89,14 @@ public class MapBuilder {
 				}else if(currentPixel == funkykong){
 					BaseDynamicEntity FunkyKong = new FunkyKong(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(FunkyKong);
+				}
+				
+				else if(currentPixel == smallbanana){
+					BaseDynamicEntity Banana = new Banana(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addEnemy(Banana);
+				}else if(currentPixel == bigbanana){
+					BaseDynamicEntity BananaBunch = new BananaBunch(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addEnemy(BananaBunch);
 				}
 			}
 

@@ -83,8 +83,15 @@ public class Map {
 				if(!((Item)entity).used){
 					g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
 				}
+				if(!((Item)entity).pickedup){
+					g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
+				}
 			}else if(entity instanceof Goomba && !entity.ded){
 				g2.drawImage(((Goomba)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+			}else if(entity instanceof Banana && !((Banana) entity).pickedup){
+				g2.drawImage(((Banana)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+			}else if(entity instanceof BananaBunch && !((BananaBunch) entity).pickedup){
+				g2.drawImage(((BananaBunch)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
 			}else if(entity instanceof Klaptrap && !entity.ded){
 				g2.drawImage(((Klaptrap)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
 			}else if(entity instanceof Klaptrap && !entity.ded){
@@ -127,8 +134,13 @@ public class Map {
 				if(!((Item)entity).used){
 					g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
 				}
+				if(!((Item)entity).pickedup){
+					g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
+				}
 			}else if(entity instanceof Goomba && !entity.ded){
 				g2.drawImage(((Goomba)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+			}else if(entity instanceof Banana && !((Banana) entity).pickedup){
+				g2.drawImage(((Banana)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
 			}else if(entity instanceof Klaptrap && !entity.ded){
 				g2.drawImage(((Klaptrap)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
 			}else if(entity instanceof Klaptrap && !entity.ded){

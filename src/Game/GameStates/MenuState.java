@@ -284,6 +284,14 @@ public class MenuState extends State {
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.4f,1,1), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.funkykong;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_R)){ // Single Banana
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,1,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.smallbanana;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_T)){ // Banana Bunch
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.8f,0.8f,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.bigbanana;
 		}
 		if(mouseManager.isLeftPressed() && !clicked){
 			int posX =mouseManager.getMouseX()/GridPixelsize;
@@ -312,7 +320,8 @@ public class MenuState extends State {
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H)){
 			JOptionPane.showMessageDialog(display.getFrame(), "Number key <-> Color Mapping: \n" +
 					"0 -> Erase \n" +
-					"1 -> Donkey Kong (Red)\n" +
+					"1 -> (Player 1) Donkey Kong (Red)\n" +
+					"Q -> (Player 2) Funky Kong" +
 					"2 -> Break Block (Blue)\n" +
 					"3 -> Mystery Block (Yellow)\n" +
 					"4 -> Surface Block (Orange)\n" +
@@ -323,7 +332,8 @@ public class MenuState extends State {
 					"9 -> Cloud Block (Light Gray)\n" +
 					"I -> Beam Block (Magenta)\n" +
 					"O -> Donut Block (Cream)\n" +
-					"P -> Klaptrap (Light Blue)");
+					"R -> Single Banana (Bright Yellow)\n" +
+					"T -> Banana Bunch (Dark Yellow)\n");
 		}
 	}
 	public UIAnimationButton getBut() {
