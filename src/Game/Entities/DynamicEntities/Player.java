@@ -89,10 +89,8 @@ public class Player extends BaseDynamicEntity {
         for (BaseDynamicEntity entity : handler.getMap().getEnemiesOnMap()) {
             if (entity != null && getBounds().intersects(entity.getBounds()) && entity instanceof Item && !isBig) {
                 isBig = true;
-                this.y -= 48;
-                this.height += 48;
-                this.x -= 48;
-                this.width +=48;
+                this.y -= 8;
+                this.height += 8;
                 setDimension(new Dimension(width, this.height));
                 ((Item) entity).used = true;
                 entity.y = -100000;
@@ -118,15 +116,9 @@ public class Player extends BaseDynamicEntity {
             	if(brick instanceof BorderBlock) {
             		State.setState(handler.getGame().deadState);
             	}
-            	else if(brick instanceof CloudBlock && jumping) {
-            		
-            	}
-            	else if(falling){
-                    mario.setY(brick.getY() - mario.getDimension().height + 1);
-                    falling = false;
-                    velY=0;
-            	}
-
+                mario.setY(brick.getY() - mario.getDimension().height + 1);
+                falling = false;
+                velY=0;
             }
         }
 
@@ -134,13 +126,12 @@ public class Player extends BaseDynamicEntity {
             Rectangle enemyTopBounds = enemy.getTopBounds();
             if (marioBottomBounds.intersects(enemyTopBounds) && !(enemy instanceof Item)) {
                 if(!enemy.ded) {
-                	
+                	State.setState(handler.getGame().deadState);
                     handler.getGame().getMusicHandler().playStomp();
                 }
                 enemy.kill();
                 falling=false;
-                jumping=true;
-                velY=5;
+                velY=0;
 
             }
         }
@@ -185,6 +176,8 @@ public class Player extends BaseDynamicEntity {
         Rectangle marioBounds = toRight ? mario.getRightBounds() : mario.getLeftBounds();
 
         for (BaseStaticEntity brick : bricks) {
+
+
             Rectangle brickBounds = !toRight ? brick.getRightBounds() : brick.getLeftBounds();
             if (marioBounds.intersects(brickBounds)) {
                 velX=0;
@@ -192,7 +185,7 @@ public class Player extends BaseDynamicEntity {
                     mario.setX(brick.getX() - mario.getDimension().width);
                 else
                     mario.setX(brick.getX() + brick.getDimension().width);
-            }
+        	}
         }
 
         for(BaseDynamicEntity enemy : enemies){

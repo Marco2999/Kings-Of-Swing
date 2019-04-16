@@ -91,6 +91,10 @@ public class Images {
     public static BufferedImage cloudBlock;
     public static BufferedImage beamBlock;
     public static BufferedImage donutBlock;
+    
+    private SpriteSheet BananasSheet;
+    public static BufferedImage[] smallbananas;
+    public static BufferedImage[] bigbananas;
   
     
     private SpriteSheet mainmenuSpriteSheet;
@@ -121,7 +125,7 @@ public class Images {
     
     
     public Images() {
-
+    	
         butstart = new BufferedImage[3];
 
         backgrounds = new BufferedImage[9];
@@ -172,6 +176,9 @@ public class Images {
         
         KlapRight = new BufferedImage[4];
         KlapLeft = new BufferedImage[4];
+        
+        smallbananas = new BufferedImage[3];
+        bigbananas = new BufferedImage[3];
 
         try {
 
@@ -191,6 +198,7 @@ public class Images {
             KlapLeft1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap.png")));
             DKFKTauntSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DKFKTaunt.png")));
             FontsSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DK Font.png")));
+            BananasSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/bananas.png")));
             
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
@@ -260,8 +268,7 @@ public class Images {
             marioBigJumpRight[2] = playerSpriteSheet.crop(248,196,15,27);//up
             marioBigJumpRight[3] = playerSpriteSheet.crop(287,122,16,15);//down
             marioBigJumpRight[4] = playerSpriteSheet.crop(368,115,16,29);//Change
-            
-            
+
             DKFKTaunt[0] = DKFKTauntSheet.crop(20, 17, 123, 37);
             DKFKTaunt[1] = DKFKTauntSheet.crop(20, 73, 123, 37);
             DKFKTaunt[2] = DKFKTauntSheet.crop(20, 115, 123, 37);
@@ -285,9 +292,7 @@ public class Images {
             DKTaunt[8] = DKFKTauntSheet.crop(20, 387, 43, 37);
             DKTaunt[9] = DKFKTauntSheet.crop(20, 433, 43, 37);
             DKTaunt[10] = DKFKTauntSheet.crop(20, 477, 43, 37);
-            
-            
-            
+
             DKIdleRight[0] = DonkeyKongSheet.crop(215, 154, 29, 30);
             DKIdleRight[1] = DonkeyKongSheet.crop(243, 154, 29, 30);
             DKIdleRight[2] = DonkeyKongSheet.crop(273, 154, 29, 30);
@@ -350,8 +355,6 @@ public class Images {
             KlapLeft[2] = KlapLeft1.crop(64, 0, 32, 18);
             KlapLeft[3] = KlapLeft1.crop(96, 0, 32, 18);
             
-            
-            
             FKIdleRight[0] = FunkyKongSheet.crop(7, 7, 36, 36);
             FKIdleRight[1] = FunkyKongSheet.crop(49, 7, 36, 36);
             FKIdleRight[2] = FunkyKongSheet.crop(88, 7, 36, 36);
@@ -411,8 +414,7 @@ public class Images {
             go = FontsSheet.crop(29, 387, 77, 33);
             goal = FontsSheet.crop(12, 428, 114, 33);
             
-            
-            
+                
             item[0] =  ImageIO.read(getClass().getResourceAsStream("/Sheets/item/SL1.png"));
             item[1] =  ImageIO.read(getClass().getResourceAsStream("/Sheets/item/SL2.png"));
             item[2] =  ImageIO.read(getClass().getResourceAsStream("/Sheets/item/SL3.png"));
@@ -528,6 +530,7 @@ public class Images {
             breakBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/brick.png"));
             borderBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/BorderBlock.png"));
             blocks = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/blocks.png")));
+            blocks = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/blocks.png")));
             
             cloudBlock = blocks.crop(0, 0, 32, 32);
             beamBlock = blocks.crop(32, 0, 32, 32);
@@ -537,6 +540,14 @@ public class Images {
 
             //items
             mushroom = interactableSpriteSheet.crop(112,34,16,16);
+            
+            smallbananas[0] = BananasSheet.crop(0,0,16,21);
+           	smallbananas[1] = BananasSheet.crop(18,0,18,21);
+           	smallbananas[2] = BananasSheet.crop(40,5,19,17);
+           	
+           	bigbananas[0] = BananasSheet.crop(64,3,23,18);
+           	bigbananas[1] = BananasSheet.crop(88,4,22,18);
+           	bigbananas[2] = BananasSheet.crop(112,4,23,19);
 
             //enemy
             goomba[0]=goombaSpriteSheet.crop(119,40,162,162);
