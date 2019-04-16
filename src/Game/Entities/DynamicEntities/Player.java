@@ -22,7 +22,7 @@ public class Player extends BaseDynamicEntity {
     public boolean moving = false;
     public Animation playerLeftAnimation,playerRightAnimation,playerIdleRightAnimation, playerIdleLeftAnimation,
     playerJumpRightAnimation, playerJumpLeftAnimation, playerRunRightAnimation, playerRunLeftAnimation;
-    public boolean falling = true, jumping = false,isBig=false,running = false,changeDirrection=false;
+    public boolean falling = true, jumping = false,isBig=true,running = false,changeDirrection=false;
     public double gravityAcc = 0.38;
     int changeDirectionCounter=0;
     

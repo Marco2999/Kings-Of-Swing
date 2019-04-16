@@ -43,7 +43,7 @@ public class MapBuilder {
 					BaseStaticEntity BoundBlock = new BoundBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(BoundBlock);
 				}else if(currentPixel == mario){
-					BaseDynamicEntity Mario = new Mario(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					BaseDynamicEntity Mario = new Mario(xPos+8,yPos+8,pixelMultiplier-8,pixelMultiplier-8,handler);
 					mapInCreation.addEnemy(Mario);
 				}else if(currentPixel == surfaceBlock){
 					BaseStaticEntity SurfaceBlock = new SurfaceBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);

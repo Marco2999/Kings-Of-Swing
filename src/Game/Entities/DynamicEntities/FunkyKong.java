@@ -26,7 +26,9 @@ public class FunkyKong extends Player{
 		if(isBig){
 			this.y-=48;
 			this.height+=48;
-			setDimension(new Dimension(width, this.height));
+			this.x-=48;
+			this.width+=48;
+			setDimension(new Dimension(this.width, this.height));
 		}
 	}
 	@Override
