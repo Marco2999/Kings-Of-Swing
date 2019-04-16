@@ -15,10 +15,10 @@ public class Banana extends Item {
     @Override
     public void tick(){
 
-    	if(!pickedup) {
+    	if(!used) {
         	super.tick();
         	anim.tick();
-        }
+    	}
     
     }
 
