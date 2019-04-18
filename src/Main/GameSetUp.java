@@ -170,6 +170,9 @@ public class GameSetUp implements Runnable {
             	updateCameraP2();
             }
         }
+        if(State.getState() == menuState) {
+        	reStart();
+        }
         if(State.getP2() && !createdP2) {
         	displayP2 = new DisplayScreen("Player 2", handler.width, handler.height);
         	display.getFrame().setLocation(screenWidth/2-handler.getWidth(), screenHeight/2-handler.getHeight()/2);

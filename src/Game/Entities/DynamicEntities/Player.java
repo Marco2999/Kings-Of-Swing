@@ -116,9 +116,12 @@ public class Player extends BaseDynamicEntity {
             	if(brick instanceof BorderBlock) {
             		State.setState(handler.getGame().deadState);
             	}
+            	else if(brick instanceof CloudBlock && jumping) {}
+            	else {
                 mario.setY(brick.getY() - mario.getDimension().height + 1);
                 falling = false;
                 velY=0;
+            	}
             }
         }
 
