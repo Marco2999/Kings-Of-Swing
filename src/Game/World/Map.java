@@ -96,12 +96,12 @@ public class Map {
 			}
 		}
 		for(BaseDynamicEntity entity:playersOnMap) {
-			if(entity instanceof Mario) {
+			if(entity instanceof Mario && handler.getMario().hitInvin%3==0)
 				handler.getMario().drawMario(g2);
-			}
-			else if(entity instanceof FunkyKong) {
+			
+			else if(entity instanceof FunkyKong && handler.getFunkyKong().hitInvin%3==0)
 				handler.getFunkyKong().drawFK(g2);
-			}
+			
 		}
 		if(this.listener != null && MapBuilder.mapDone) {
 			this.listener.render(g2);

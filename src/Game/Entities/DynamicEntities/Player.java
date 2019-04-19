@@ -30,6 +30,8 @@ public class Player extends BaseDynamicEntity {
 	public boolean dead = false;
 	public int initialX;
 	public int initialY;
+	public int hitInvin = 0;
+	public boolean hit = false;
 
 	public static int misc = 3;
 
@@ -57,6 +59,13 @@ public class Player extends BaseDynamicEntity {
 		if(changeDirectionCounter>=10){
 			changeDirrection=false;
 			changeDirectionCounter=0;
+		}
+		if(hit) {
+			hitInvin++;
+		}
+		if(hitInvin==61) {
+			hit=false;
+			hitInvin=0;
 		}
 
 		checkBottomCollisions();
@@ -131,13 +140,13 @@ public class Player extends BaseDynamicEntity {
 
 		for (BaseDynamicEntity enemy : enemies) {
 			Rectangle enemyTopBounds = enemy.getTopBounds();
-			if (marioBottomBounds.intersects(enemyTopBounds) && !(enemy instanceof Item)) {
+			if (marioBottomBounds.intersects(enemyTopBounds) && !(enemy instanceof Item) && !hit) {
 				if(!enemy.ded) {
 					handler.getGame().getMusicHandler().playStomp();
 				}
 				enemy.kill();
 				falling=false;
-				velY=0;
+				jump();
 			}
 		}
 
@@ -184,12 +193,16 @@ public class Player extends BaseDynamicEntity {
 			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
 			if (marioBounds.intersects(enemyBounds)) {
 				if(isBig) {
-					isBig = false;
+					hit=true;
+					isBig=false;
+					this.x+=48;
+					this.y+=48;
+					this.height-=48;
+					this.width-=48;
+					setDimension(new Dimension(this.width, this.height));
 				}
-				else {
+				else if(hitInvin==0)
 					dead=true;
-				}
-				break;
 			}
 		} 
 	}
