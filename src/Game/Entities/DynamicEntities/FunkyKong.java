@@ -11,6 +11,7 @@ public class FunkyKong extends Player{
 
 	private boolean hit = false;
 	public boolean grabbed =false;
+	public boolean groundpound = false;
 
 	public FunkyKong(int x, int y, int width, int height, Handler handler) {
 		super(x, y, width, height, handler, Images.FKIdleRight[0]
@@ -67,7 +68,7 @@ public class FunkyKong extends Player{
 						}
 						facing = "Left";
 						moving = true;
-					} else {
+					} else if(!falling && !jumping){
 						velX = 0;
 						moving = false;
 					}
@@ -77,6 +78,26 @@ public class FunkyKong extends Player{
 					} else if (jumping) {
 						velY = velY - gravityAcc;
 						y = (int) (y - velY);
+					}
+					
+					if((falling || jumping) && handler.getKeyManager().down2) {
+						jumping = false;
+						falling = true;
+						groundpound = true;
+					}
+					
+					if(groundpound) {
+						velY = velY + gravityAcc*2;
+						y = (int) (y + velY);
+					}
+					
+					if(groundpound && !falling) {
+						groundpound = false;
+						handler.getCameraP2().shakeCamera();
+						if(Math.abs(handler.getMario().getX()-this.getX())<handler.getWidth()*3/4 &&
+								Math.abs(handler.getMario().getY()-this.getY())<handler.getHeight()*3/4) {
+							handler.getCamera().shakeCamera();
+						}
 					}
 
 					if (falling) {
@@ -102,7 +123,7 @@ public class FunkyKong extends Player{
 						} else {
 							g2.drawImage(Images.FKLook[0], x, y, width, height, null);
 						}
-					} else if (handler.getKeyManager().down2) {
+					} else if (handler.getKeyManager().down2 || groundpound) {
 						if (facing.equals("Left")) {
 							g2.drawImage(Images.FKLook[3], x, y, width, height, null);
 						} else {

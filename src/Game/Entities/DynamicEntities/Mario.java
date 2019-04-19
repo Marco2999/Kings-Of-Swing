@@ -68,7 +68,7 @@ public class Mario extends Player{
 						}
 						facing = "Left";
 						moving = true;
-					} else {
+					} else if(!falling && !jumping){
 						velX = 0;
 						moving = false;
 					}
