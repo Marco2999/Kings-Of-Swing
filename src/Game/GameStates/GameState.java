@@ -1,6 +1,7 @@
 package Game.GameStates;
 
 import Display.UI.UIPointer;
+import Display.UI.UIStringButton;
 import Game.Entities.DynamicEntities.BaseDynamicEntity;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.World.MapBuilder;
@@ -11,20 +12,49 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 import Display.UI.UIListener;
+import Display.UI.UIManager;
 
 /**
  * Created by AlexVR on 7/1/2018.
  */
 public class GameState extends State {
 
+	private UIManager uiManager;
+
 	public GameState(Handler handler){
 		super(handler);
 		handler.getGame().pointer = new UIPointer(28 * MapBuilder.pixelMultiplier,197 * MapBuilder.pixelMultiplier,128,128,handler);
+		uiManager = new UIManager(handler);
+		
+		uiManager.addObjects(new UIStringButton(56, 223, 128, 64, "Respawn", () -> {
+			if(handler.getMario().dead || handler.getFunkyKong().dead) {
+				handler.getMouseManager().setUimanager(null);
+				if(handler.getMario().dead)
+				handler.getMario().respawn();
+				else
+				handler.getFunkyKong().respawn();
+			}},handler,Color.WHITE));
+
+		uiManager.addObjects(new UIStringButton(56, 223+(64+16), 128, 64, "Options", () -> {
+			if(handler.getMario().dead  || handler.getFunkyKong().dead) {
+				handler.getMouseManager().setUimanager(null);
+				handler.setIsInMap(false);
+				State.setState(handler.getGame().menuState);
+			}},handler,Color.WHITE));
+
+		uiManager.addObjects(new UIStringButton(56, (223+(64+16))+(64+16), 128, 64, "Title", () -> {
+			if(handler.getMario().dead  || handler.getFunkyKong().dead) {
+				handler.getMouseManager().setUimanager(null);
+				handler.setIsInMap(false);
+				State.setState(handler.getGame().menuState);
+			}},handler,Color.WHITE));
 
 	}
 
 	@Override
 	public void tick() {
+		handler.getMouseManager().setUimanager(uiManager);
+		uiManager.tick();
 
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
 			State.setState(handler.getGame().pauseState);
@@ -48,28 +78,41 @@ public class GameState extends State {
 	@Override
 	public void render(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g.create();
-		handler.getMap().drawMap(g2);
-		if(handler.getMario().tickCounter<60) {
-			g2.drawImage(Images.ready,handler.getWidth()/2-Images.ready.getWidth(),
-					handler.getHeight()/2-Images.ready.getHeight(), Images.ready.getWidth()*2, Images.ready.getHeight()*2,null);
+
+		if(!handler.getMario().dead) {
+			handler.getMap().drawMap(g2);
+			if(handler.getMario().tickCounter<60) {
+				g2.drawImage(Images.ready,handler.getWidth()/2-Images.ready.getWidth(),
+						handler.getHeight()/2-Images.ready.getHeight(), Images.ready.getWidth()*2, Images.ready.getHeight()*2,null);
+			}
+			else if(handler.getMario().tickCounter<120) {
+				g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth(),
+						handler.getHeight()/2-Images.go.getHeight(), Images.go.getWidth()*2, Images.go.getHeight()*2,null);
+			}
 		}
-		else if(handler.getMario().tickCounter<120) {
-			g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth(),
-					handler.getHeight()/2-Images.go.getHeight(), Images.go.getWidth()*2, Images.go.getHeight()*2,null);
+		else {
+			g.drawImage(Images.Pause,0,0,handler.getWidth(),handler.getHeight(),null);
+			uiManager.Render(g);
 		}
 	}
 	public void renderP2(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g.create();
-		handler.getMap().drawMapP2(g2);
-		if(handler.getFunkyKong().tickCounter<60) {
-			g2.drawImage(Images.ready,handler.getWidth()/2-Images.ready.getWidth(),
-					handler.getHeight()/2-Images.ready.getHeight(), Images.ready.getWidth()*2, Images.ready.getHeight()*2,null);
+
+		if(!handler.getFunkyKong().dead) {
+			handler.getMap().drawMapP2(g2);
+			if(handler.getFunkyKong().tickCounter<60) {
+				g2.drawImage(Images.ready,handler.getWidth()/2-Images.ready.getWidth(),
+						handler.getHeight()/2-Images.ready.getHeight(), Images.ready.getWidth()*2, Images.ready.getHeight()*2,null);
+			}
+			else if(handler.getFunkyKong().tickCounter<120) {
+				g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth(),
+						handler.getHeight()/2-Images.go.getHeight(), Images.go.getWidth()*2, Images.go.getHeight()*2,null);
+			}
 		}
-		else if(handler.getFunkyKong().tickCounter<120) {
-			g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth(),
-					handler.getHeight()/2-Images.go.getHeight(), Images.go.getWidth()*2, Images.go.getHeight()*2,null);
+		else {
+			g.drawImage(Images.Pause,0,0,handler.getWidth(),handler.getHeight(),null);
+			uiManager.Render(g);
 		}
 	}
-
 
 }

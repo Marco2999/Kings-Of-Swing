@@ -26,7 +26,7 @@ public class Klaptrap extends BaseDynamicEntity {
     public void tick(){
     	
     	
-        if(!ded && dedCounter==0) {
+        if(!ded) {
         	
         	if(direction == "Right") {
         		anim = right;
@@ -46,20 +46,19 @@ public class Klaptrap extends BaseDynamicEntity {
             checkHorizontal();
             move();
         }else if(ded&&dedCounter==0){
-            y++;
-            height--;
-            setDimension(new Dimension(width,height));
-            if (height==0){
-                dedCounter=1;
-                y=-10000;
-            }
+            y = (int) (y + velY);
+            velY = velY + gravityAcc/4;
+
         }
     }
 
 
 	@Override
     public void kill() {
-        sprite = Images.goombaDies;
+		if(direction == "Left") 
+		sprite = Images.KlapDead[0];
+		else
+		sprite = Images.KlapDead[1];
         ded=true;
     }
     

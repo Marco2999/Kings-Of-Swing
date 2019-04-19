@@ -37,8 +37,7 @@ public class FunkyKong extends Player{
 	public void tick(){
 		tickCounter++;
 		if(tickCounter==120) {canMove=true;}
-		if(!grabbed) {
-			if(canMove) {
+		if(!grabbed && !dead && canMove) {
 				super.tick();
 				if (!this.hit) {
 					if (handler.getKeyManager().jumpbutt2 && !handler.getKeyManager().up2 && !handler.getKeyManager().down2) {
@@ -113,12 +112,12 @@ public class FunkyKong extends Player{
 					this.setX(this.getX() - 30);
 					this.setY(this.getY() - 30);
 				}
-			}
+			
 		}
 	}
 
 	public void drawFK(Graphics2D g2) {
-		if(!grabbed) {
+		if(!grabbed && !dead) {
 			if(canMove) {
 				if (!changeDirrection) {
 					if (handler.getKeyManager().up2) {

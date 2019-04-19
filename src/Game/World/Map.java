@@ -45,9 +45,6 @@ public class Map {
 	public void addBlock(BaseStaticEntity block){
 		blocksOnMap.add(block);
 	}
-	public void addBorderBlock(BaseStaticEntity block){
-		bordersOnMap.add(block);
-	}
 	public void addEnemy(BaseDynamicEntity entity){
 		if(entity instanceof Mario){
 			handler.setMario((Mario) entity);
@@ -166,10 +163,6 @@ public class Map {
 	public ArrayList<BaseStaticEntity> getBlocksOnMap() {
 		return blocksOnMap;
 	}
-	public ArrayList<BaseStaticEntity> getBordersOnMap() {
-		return bordersOnMap;
-	}
-
 	public ArrayList<BaseDynamicEntity> getEnemiesOnMap() {
 		return enemiesOnMap;
 	}

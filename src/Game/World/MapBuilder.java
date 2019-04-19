@@ -73,7 +73,7 @@ public class MapBuilder {
 					mapInCreation.addEnemy(Goomba);
 				}else if(currentPixel == borderBlock){
 					BaseStaticEntity BorderBlock = new BorderBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
-					mapInCreation.addBorderBlock(BorderBlock);
+					mapInCreation.addBlock(BorderBlock);
 				}else if(currentPixel == cloudBlock){
 					BaseStaticEntity cloudBlock = new CloudBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(cloudBlock);

@@ -35,8 +35,7 @@ public class Mario extends Player{
 	public void tick(){
 		tickCounter++;
 		if(tickCounter==120) {canMove=true;}
-		if(!grabbed) {
-			if(canMove) {
+		if(!grabbed && canMove && !dead) {
 				super.tick();
 				if (!this.hit) {
 					if (handler.getKeyManager().jumpbutt && !handler.getKeyManager().up && !handler.getKeyManager().down) {
@@ -91,11 +90,11 @@ public class Mario extends Player{
 					this.setY(this.getY() - 30);
 				}
 			}
-		}
+		
 	}
 
 	public void drawMario(Graphics2D g2) {
-		if(!grabbed) {
+		if(!grabbed && !dead) {
 			if(canMove) {
 				if (!changeDirrection) {
 					if (handler.getKeyManager().up) {

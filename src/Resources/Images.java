@@ -112,9 +112,11 @@ public class Images {
     
     private SpriteSheet KlapRight1;
     private SpriteSheet KlapLeft1;
+    private SpriteSheet KlapSheet;
 
     public static BufferedImage[] KlapLeft;
     public static BufferedImage[] KlapRight;
+    public static BufferedImage[] KlapDead;
     
     
     
@@ -176,6 +178,7 @@ public class Images {
         
         KlapRight = new BufferedImage[4];
         KlapLeft = new BufferedImage[4];
+        KlapDead = new BufferedImage[2];
         
         smallbananas = new BufferedImage[3];
         bigbananas = new BufferedImage[3];
@@ -196,6 +199,7 @@ public class Images {
             FunkyKongSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/FunkyKongSheet.png")));
             KlapRight1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap2.png")));
             KlapLeft1 =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrap.png")));
+            KlapSheet  =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/klaptrapsheet.png")));
             DKFKTauntSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DKFKTaunt.png")));
             FontsSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DK Font.png")));
             BananasSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/bananas.png")));
@@ -354,6 +358,10 @@ public class Images {
             KlapLeft[1] = KlapLeft1.crop(32, 0, 32, 18);
             KlapLeft[2] = KlapLeft1.crop(64, 0, 32, 18);
             KlapLeft[3] = KlapLeft1.crop(96, 0, 32, 18);
+            
+            KlapDead[0] = KlapSheet.crop(5, 69, 32, 18);
+            KlapDead[1] = KlapSheet.crop(45, 69, 32, 18);
+            
             
             FKIdleRight[0] = FunkyKongSheet.crop(7, 7, 36, 36);
             FKIdleRight[1] = FunkyKongSheet.crop(49, 7, 36, 36);
