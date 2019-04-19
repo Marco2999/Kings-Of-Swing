@@ -11,7 +11,6 @@ public class Mario extends Player{
 
 	private boolean hit = false;
 	public boolean grabbed =false;
-    public boolean canMove = false;
 
 	public Mario(int x, int y, int width, int height, Handler handler) {
 		super(x, y, width, height, handler, Images.DKIdleRight[0]
@@ -34,6 +33,8 @@ public class Mario extends Player{
 	}
 	@Override
 	public void tick(){
+		tickCounter++;
+		if(tickCounter==120) {canMove=true;}
 		if(!grabbed) {
 			if(canMove) {
 				super.tick();

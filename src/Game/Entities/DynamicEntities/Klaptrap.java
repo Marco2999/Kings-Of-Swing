@@ -28,9 +28,9 @@ public class Klaptrap extends BaseDynamicEntity {
     	
         if(!ded && dedCounter==0) {
         	
-        	if(this.direction == "Right") {
+        	if(direction == "Right") {
         		anim = right;
-        	}else if(this.direction == "Left") {
+        	}else if(direction == "Left") {
         		anim = left;
         	}
         	

@@ -12,6 +12,7 @@ public class FunkyKong extends Player{
 	private boolean hit = false;
 	public boolean grabbed =false;
 	public boolean groundpound = false;
+	public int cooldown = 0;
 
 	public FunkyKong(int x, int y, int width, int height, Handler handler) {
 		super(x, y, width, height, handler, Images.FKIdleRight[0]
@@ -34,8 +35,10 @@ public class FunkyKong extends Player{
 	}
 	@Override
 	public void tick(){
+		tickCounter++;
+		if(tickCounter==120) {canMove=true;}
 		if(!grabbed) {
-			if(handler.getMario().canMove) {
+			if(canMove) {
 				super.tick();
 				if (!this.hit) {
 					if (handler.getKeyManager().jumpbutt2 && !handler.getKeyManager().up2 && !handler.getKeyManager().down2) {
@@ -80,10 +83,11 @@ public class FunkyKong extends Player{
 						y = (int) (y - velY);
 					}
 					
-					if((falling || jumping) && handler.getKeyManager().down2) {
+					if((falling || jumping) && handler.getKeyManager().down2 && tickCounter-cooldown>100) {
 						jumping = false;
 						falling = true;
 						groundpound = true;
+						cooldown=tickCounter;
 					}
 					
 					if(groundpound) {
@@ -115,7 +119,7 @@ public class FunkyKong extends Player{
 
 	public void drawFK(Graphics2D g2) {
 		if(!grabbed) {
-			if(handler.getMario().canMove) {
+			if(canMove) {
 				if (!changeDirrection) {
 					if (handler.getKeyManager().up2) {
 						if (facing.equals("Left")) {

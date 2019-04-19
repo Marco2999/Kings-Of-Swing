@@ -14,8 +14,6 @@ public class BaseDynamicEntity extends EntityBase {
 	protected int dedCounter = 0;
 	public double gravityAcc = 0.38;
 	protected double velX = 1, velY = 7;
-	
-	public int klaptrapDirection;
 
 	public BaseDynamicEntity(int x, int y, int width, int height, Handler handler, BufferedImage sprite) {
 		super(x, y, width, height, handler, sprite);
@@ -84,12 +82,8 @@ public class BaseDynamicEntity extends EntityBase {
 	protected void move() {
 
 		if (direction.equals("Right")) {
-			if(this.klaptrapDirection == 1) {
-				this.klaptrapDirection = 0; }
 			x += velX;
 		} else {
-			if(this.klaptrapDirection == 0) {
-				this.klaptrapDirection = 1; }
 			x -= velX;
 		}
 		Rectangle mushroomBottom = getBottomBounds();

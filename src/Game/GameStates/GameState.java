@@ -16,8 +16,6 @@ import Display.UI.UIListener;
  * Created by AlexVR on 7/1/2018.
  */
 public class GameState extends State {
-	int counter =0;
-	boolean startCounter = false;
 
 	public GameState(Handler handler){
 		super(handler);
@@ -27,8 +25,6 @@ public class GameState extends State {
 
 	@Override
 	public void tick() {
-		counter++;
-		if(counter>=120) {handler.getMario().canMove = true;}
 
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
 			State.setState(handler.getGame().pauseState);
@@ -53,11 +49,11 @@ public class GameState extends State {
 	public void render(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g.create();
 		handler.getMap().drawMap(g2);
-		if(counter<60) {
+		if(handler.getMario().tickCounter<60) {
 			g2.drawImage(Images.ready,handler.getWidth()/2-Images.ready.getWidth(),
 					handler.getHeight()/2-Images.ready.getHeight(), Images.ready.getWidth()*2, Images.ready.getHeight()*2,null);
 		}
-		else if(counter<120) {
+		else if(handler.getMario().tickCounter<120) {
 			g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth(),
 					handler.getHeight()/2-Images.go.getHeight(), Images.go.getWidth()*2, Images.go.getHeight()*2,null);
 		}
@@ -65,11 +61,11 @@ public class GameState extends State {
 	public void renderP2(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g.create();
 		handler.getMap().drawMapP2(g2);
-		if(counter<60) {
+		if(handler.getFunkyKong().tickCounter<60) {
 			g2.drawImage(Images.ready,handler.getWidth()/2-Images.ready.getWidth(),
 					handler.getHeight()/2-Images.ready.getHeight(), Images.ready.getWidth()*2, Images.ready.getHeight()*2,null);
 		}
-		else if(counter<120) {
+		else if(handler.getFunkyKong().tickCounter<120) {
 			g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth(),
 					handler.getHeight()/2-Images.go.getHeight(), Images.go.getWidth()*2, Images.go.getHeight()*2,null);
 		}

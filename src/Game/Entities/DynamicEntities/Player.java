@@ -25,6 +25,8 @@ public class Player extends BaseDynamicEntity {
     public boolean falling = true, jumping = false,isBig=true,running = false,changeDirrection=false;
     public double gravityAcc = 0.38;
     int changeDirectionCounter=0;
+    public int tickCounter=0;
+    public boolean canMove = false;
     
     public static int misc = 3;
 
@@ -44,7 +46,6 @@ public class Player extends BaseDynamicEntity {
 
     @Override
     public void tick(){
-
         if (changeDirrection) {
             changeDirectionCounter++;
         }
