@@ -17,6 +17,7 @@ import Game.Entities.DynamicEntities.Goomba;
 import Game.Entities.DynamicEntities.Klaptrap;
 import Game.Entities.DynamicEntities.Mario;
 import Game.Entities.DynamicEntities.Mushroom;
+import Game.Entities.DynamicEntities.Zinger;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.Entities.StaticEntities.BeamBlock;
 import Game.Entities.StaticEntities.BorderBlock;
@@ -44,11 +45,12 @@ public class MapBuilder {
 	public static int beamBlock = new Color(255,0,127).getRGB(); // Magenta
 	public static int donutBlock = new Color(255,178,102).getRGB(); // Light Orange
 	public static int klaptrap = new Color(102,255,255).getRGB(); // Baby Blue
+	public static int zinger = new Color(138,43,226).getRGB(); // Violet
 	public static int funkykong = new Color(130,35,0).getRGB(); // Baby Blue
 	public static int smallbanana = new Color(255, 255,0).getRGB(); // Bright Yellow
 	public static int bigbanana = new Color(204, 204,0).getRGB(); // Dark yellow
-	public static int checkPoint = new Color(255, 0, 131).getRGB(); // Pink
-	public static int finishLine = new Color(242, 0, 255).getRGB(); //Bright Purple
+	public static int checkPoint = new Color(0, 255, 0).getRGB(); // Green
+	public static int finishLine = new Color(0, 153, 0).getRGB(); // Dark Green
 	public static boolean mapDone = false;
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
@@ -94,6 +96,9 @@ public class MapBuilder {
 				}else if(currentPixel == klaptrap){
 					BaseDynamicEntity Klaptrap = new Klaptrap(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Klaptrap);
+				}else if(currentPixel == zinger){
+					BaseDynamicEntity Zinger = new Zinger(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addEnemy(Zinger);
 				}else if(currentPixel == funkykong){
 					BaseDynamicEntity FunkyKong = new FunkyKong(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(FunkyKong);

@@ -197,7 +197,7 @@ public class MenuState extends State {
 	public void render(Graphics g) {
 		if(!creatingMap) {
 			g.setColor(Color.GREEN);
-			g.drawImage(Images.backgrounds[background], 0, 0, handler.getWidth(), handler.getHeight(), null);
+			g.drawImage(Images.TitleBG, 0, 0, handler.getWidth(), handler.getHeight(), null);
 			g.drawImage(Images.title, 0, 0, handler.getWidth(), handler.getHeight(), null);
 			uiManager.Render(g);
 		}else{
@@ -280,6 +280,10 @@ public class MenuState extends State {
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.4f,1,1), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.klaptrap;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_L)){ // Zinger
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.5f,0.16f,0.8f), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.zinger;
 		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_Q)){ // FunkyKong
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.4f,1,1), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
@@ -292,12 +296,12 @@ public class MenuState extends State {
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.8f,0.8f,1), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.bigbanana;
-		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W)){ //FinishLine
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.8f,0.8f,1), new Point(0, 0), "cursor1");
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W)){ // Check Point
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,1,0), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.checkPoint;
-		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)){ //FinishLine
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.8f,0.8f,1), new Point(0, 0), "cursor1");
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)){ //Finish Line
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,0.6f,0), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.finishLine;
 		}
@@ -342,9 +346,12 @@ public class MenuState extends State {
 					"9 -> Cloud Block (Light Gray)\n" +
 					"I -> Beam Block (Magenta)\n" +
 					"O -> Donut Block (Cream)\n" +
-					"P -> KlapTrap (Light Blue)\n" +
+					"P -> Klaptrap (Light Blue)\n" +
+					"L -> Zinger (Violet)\n" +
 					"R -> Single Banana (Bright Yellow)\n" +
-					"T -> Banana Bunch (Dark Yellow)\n");
+					"T -> Banana Bunch (Dark Yellow)\n" +
+					"W -> Checkpoint (Green)\n" +
+					"E -> Finish Line (Dark Green)\n");
 		}
 	}
 	public UIAnimationButton getBut() {
