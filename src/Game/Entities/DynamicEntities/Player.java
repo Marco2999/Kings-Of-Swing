@@ -9,7 +9,9 @@ import Display.UI.UIPointer;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.Entities.StaticEntities.BorderBlock;
 import Game.Entities.StaticEntities.BoundBlock;
+import Game.Entities.StaticEntities.BreakBlock;
 import Game.Entities.StaticEntities.CloudBlock;
+import Game.Entities.StaticEntities.MisteryBlock;
 import Game.GameStates.State;
 import Main.Handler;
 import Resources.Animation;
@@ -169,9 +171,14 @@ public class Player extends BaseDynamicEntity {
 		for (BaseStaticEntity brick : bricks) {
 			Rectangle brickBottomBounds = brick.getBottomBounds();
 			if (marioTopBounds.intersects(brickBottomBounds)) {
-				if(brick instanceof BorderBlock) {dead=true;}
 				velY=0;
 				mario.setY(brick.getY() + brick.height);
+				if(brick instanceof BorderBlock) {dead=true;}
+				if(brick instanceof BreakBlock && jumping) {
+					brick.x=100000;
+					brick.y=100000;
+				}
+
 			}
 		}
 	}
