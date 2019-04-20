@@ -35,8 +35,14 @@ public class Mario extends Player{
 	public void tick(){
 		if(!touchFinish)
 			tickCounter++;
-		else {
+		else 
 			canMove=false;
+
+		if(gameType.equals("Banana")){
+			if(tickCountDown>0 && tickCounter>120)
+				tickCountDown--;
+			else
+				canMove=false;
 		}
 
 		if(tickCounter==120) {canMove=true;}

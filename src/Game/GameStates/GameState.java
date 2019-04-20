@@ -89,13 +89,27 @@ public class GameState extends State {
 				g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth()*3/2,
 						handler.getHeight()/2-Images.go.getHeight()*3/2, Images.go.getWidth()*3, Images.go.getHeight()*3,null);
 			}
-			if(handler.getMario().touchFinish) {
+			if(handler.getMario().touchFinish && handler.getMario().gameType.equals("Race")) {
 				g2.drawImage(Images.goal,handler.getWidth()/2-Images.go.getWidth()*3/2,
 						handler.getHeight()/2-Images.go.getHeight()*3/2, Images.go.getWidth()*3, Images.go.getHeight()*3,null);
 				g2.setFont(new Font("Times New Roman", Font.BOLD, 100));
 				g2.setColor(Color.red);
 				g2.drawString(String.format("%.2f", handler.getMario().timeCompleted) + " s", handler.getWidth()/2-100, handler.getHeight()/2+150);
 			} 
+			if(handler.getMario().gameType.equals("Banana")) {
+				if(handler.getMario().tickCountDown>0) {
+				g2.setFont(new Font("Times New Roman", Font.BOLD, 100));
+				g2.setColor(Color.red);
+				g2.drawString(String.format("%.2f", ((double)handler.getMario().tickCountDown)/60) + " s", 0, handler.getHeight());
+				}
+				else {
+					g2.drawImage(Images.goal,handler.getWidth()/2-Images.go.getWidth()*3/2,
+							handler.getHeight()/2-Images.go.getHeight()*3/2, Images.go.getWidth()*3, Images.go.getHeight()*3,null);
+					g2.setFont(new Font("Times New Roman", Font.BOLD, 100));
+					g2.setColor(Color.red);
+					g2.drawString(handler.getMario().bananaCounter + " Bananas", handler.getWidth()/2-300, handler.getHeight()/2+150);
+				}
+			}
 		}
 		else {
 			g.drawImage(Images.Pause,0,0,handler.getWidth(),handler.getHeight(),null);
@@ -115,13 +129,27 @@ public class GameState extends State {
 				g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth()*3/2,
 						handler.getHeight()/2-Images.go.getHeight()*3/2, Images.go.getWidth()*3, Images.go.getHeight()*3,null);
 			}
-			if(handler.getFunkyKong().touchFinish) {
+			if(handler.getFunkyKong().touchFinish && handler.getFunkyKong().gameType.equals("Race")) {
 				g2.drawImage(Images.goal,handler.getWidth()/2-Images.go.getWidth()*3/2,
 						handler.getHeight()/2-Images.go.getHeight()*3/2, Images.go.getWidth()*3, Images.go.getHeight()*3,null);
 				g2.setFont(new Font("Times New Roman", Font.BOLD, 100));
 				g2.setColor(Color.red);
 				g2.drawString(String.format("%.2f", handler.getFunkyKong().timeCompleted) + " s", handler.getWidth()/2-100, handler.getHeight()/2+150);
 			} 
+			if(handler.getFunkyKong().gameType.equals("Banana")) {
+				if(handler.getFunkyKong().tickCountDown>0) {
+				g2.setFont(new Font("Times New Roman", Font.BOLD, 100));
+				g2.setColor(Color.red);
+				g2.drawString(String.format("%.2f", ((double)handler.getFunkyKong().tickCountDown)/60) + " s", 0, handler.getHeight());
+				}
+				else {
+					g2.drawImage(Images.goal,handler.getWidth()/2-Images.go.getWidth()*3/2,
+							handler.getHeight()/2-Images.go.getHeight()*3/2, Images.go.getWidth()*3, Images.go.getHeight()*3,null);
+					g2.setFont(new Font("Times New Roman", Font.BOLD, 100));
+					g2.setColor(Color.red);
+					g2.drawString(handler.getFunkyKong().bananaCounter + " Bananas", handler.getWidth()/2-300, handler.getHeight()/2+150);
+				}
+			}
 		}
 		else {
 			g.drawImage(Images.Pause,0,0,handler.getWidth(),handler.getHeight(),null);

@@ -38,6 +38,9 @@ public class Player extends BaseDynamicEntity {
 	public boolean groundpound = false;
 	public boolean touchFinish = false;
 	public double timeCompleted;
+	public int bananaCounter =0;
+	public String gameType = "";
+	public int tickCountDown = 3600;
 
 	public static int misc = 3;
 
@@ -59,6 +62,22 @@ public class Player extends BaseDynamicEntity {
 
 	@Override
 	public void tick(){
+
+		if(gameType.equals("")) {
+			for(BaseDynamicEntity entity: handler.getMap().getEnemiesOnMap()) {
+				if(entity!=null && entity instanceof Item) {
+					if(entity instanceof Banana || entity instanceof BananaBunch) {
+						gameType="Banana";
+					break;
+					}
+					if(entity instanceof FinishLine) {
+						gameType="Race";
+					break;
+					}
+				}
+			}
+		}
+
 		//DK double jump
 		if(!jumping && !falling) {jumpc =2; }
 		djcountertick++;
@@ -67,7 +86,7 @@ public class Player extends BaseDynamicEntity {
 			djcountertick =0;
 			jumpc=2;
 		}
-		
+
 		if (changeDirrection) {
 			changeDirectionCounter++;
 		}
@@ -128,6 +147,14 @@ public class Player extends BaseDynamicEntity {
 					((Item) entity).used = true;
 					entity.y = -100000;
 				}
+				else if(entity instanceof Banana) {
+					entity.x=1000000;
+					bananaCounter++;
+				}
+				else if(entity instanceof BananaBunch) {
+					entity.x=10000;
+					bananaCounter+=5;
+				}
 			}
 		}
 	}
@@ -181,13 +208,14 @@ public class Player extends BaseDynamicEntity {
 		for (BaseStaticEntity brick : bricks) {
 			Rectangle brickBottomBounds = brick.getBottomBounds();
 			if (marioTopBounds.intersects(brickBottomBounds)) {
-				velY=0;
 				mario.setY(brick.getY() + brick.height);
 				if(brick instanceof BorderBlock) {dead=true;}
 				if(brick instanceof BreakBlock && jumping) {
 					brick.x=100000;
 					brick.y=100000;
 				}
+				falling=true;
+				velY=0;
 
 			}
 		}
@@ -240,7 +268,7 @@ public class Player extends BaseDynamicEntity {
 			jumping = true;
 			velY = 10;
 			handler.getGame().getMusicHandler().playJump();
-			
+
 		}
 		else if(this instanceof Mario && jumpc == 1 && djcounter==1) {
 			falling = false;
@@ -255,7 +283,7 @@ public class Player extends BaseDynamicEntity {
 			velY=10;
 			handler.getGame().getMusicHandler().playJump();
 		}
-		
+
 	}
 	public void respawn() {
 		dead=false;

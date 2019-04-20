@@ -80,7 +80,9 @@ public class Map {
 				if(!((Item)entity).used){
 					if(entity instanceof Banana) {
 						g2.drawImage(((Banana)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
-					}if(entity instanceof CheckPoint) {
+					}else if(entity instanceof BananaBunch) {
+						g2.drawImage(((BananaBunch)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+					}else if(entity instanceof CheckPoint) {
 						g2.drawImage(((CheckPoint)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
 					}else if(entity instanceof CheckPointBarP2){}
 					else if(entity instanceof FinishLineBarP2){}
@@ -131,7 +133,9 @@ public class Map {
 				if(!((Item)entity).used){
 					if(entity instanceof Banana) {
 						g2.drawImage(((Banana)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
-					}if(entity instanceof CheckPoint) {
+					}else if(entity instanceof BananaBunch) {
+						g2.drawImage(((BananaBunch)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+					}else if(entity instanceof CheckPoint) {
 						g2.drawImage(((CheckPoint)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
 					}else if(entity instanceof CheckPointBar) {}
 					else if(entity instanceof FinishLineBar) {}

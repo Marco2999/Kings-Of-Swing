@@ -308,7 +308,7 @@ public class MenuState extends State {
 			blocks[posX][posY]=new Color(colorSelected);
 			clicked=true;
 		}
-
+	
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ENTER)){
 			for (int i = 0; i < GridWidthPixelCount; i++) {
 				for (int j = 0; j < GridHeightPixelCount; j++) {
@@ -330,6 +330,8 @@ public class MenuState extends State {
 					"0 -> Erase \n" +
 					"1 -> (Player 1) Donkey Kong (Red)\n" +
 					"Q -> (Player 2) Funky Kong\n" +
+					"W -> CheckPoint (Pink)\n" + 
+					"E -> FinishLine (Bright Purple)\n" + 
 					"2 -> Break Block (Blue)\n" +
 					"3 -> Mystery Block (Yellow)\n" +
 					"4 -> Surface Block (Orange)\n" +
@@ -340,6 +342,7 @@ public class MenuState extends State {
 					"9 -> Cloud Block (Light Gray)\n" +
 					"I -> Beam Block (Magenta)\n" +
 					"O -> Donut Block (Cream)\n" +
+					"P -> KlapTrap (Light Blue)\n" +
 					"R -> Single Banana (Bright Yellow)\n" +
 					"T -> Banana Bunch (Dark Yellow)\n");
 		}

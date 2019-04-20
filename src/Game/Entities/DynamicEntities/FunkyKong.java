@@ -34,7 +34,17 @@ public class FunkyKong extends Player{
 	}
 	@Override
 	public void tick(){
-		tickCounter++;
+		if(!touchFinish)
+			tickCounter++;
+		else 
+			canMove=false;
+
+		if(gameType.equals("Banana")){
+			if(tickCountDown>0 && tickCounter>120)
+				tickCountDown--;
+			else
+				canMove=false;
+		}
 		if(tickCounter==120) {canMove=true;}
 		if(!grabbed && !dead) {
 			super.tick();
