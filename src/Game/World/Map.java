@@ -80,7 +80,11 @@ public class Map {
 				if(!((Item)entity).used){
 					if(entity instanceof Banana) {
 						g2.drawImage(((Banana)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
-					}else {
+					}if(entity instanceof CheckPoint) {
+						g2.drawImage(((CheckPoint)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+					}else if(entity instanceof CheckPointBarP2){}
+					else if(entity instanceof FinishLineBarP2){}
+					else {
 						g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
 					}
 				}
@@ -127,7 +131,11 @@ public class Map {
 				if(!((Item)entity).used){
 					if(entity instanceof Banana) {
 						g2.drawImage(((Banana)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
-					}else {
+					}if(entity instanceof CheckPoint) {
+						g2.drawImage(((CheckPoint)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+					}else if(entity instanceof CheckPointBar) {}
+					else if(entity instanceof FinishLineBar) {}
+					else {
 						g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
 					}
 				}
@@ -143,12 +151,12 @@ public class Map {
 			}
 		}
 		for(BaseDynamicEntity entity:playersOnMap) {
-			if(entity instanceof Mario) {
+			if(entity instanceof Mario && handler.getMario().hitInvin%3==0)
 				handler.getMario().drawMario(g2);
-			}
-			else if(entity instanceof FunkyKong) {
+			
+			else if(entity instanceof FunkyKong && handler.getFunkyKong().hitInvin%3==0)
 				handler.getFunkyKong().drawFK(g2);
-			}
+			
 		}
 		if(this.listener != null && MapBuilder.mapDone) {
 			this.listener.render(g2);

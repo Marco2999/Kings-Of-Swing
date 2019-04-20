@@ -6,6 +6,12 @@ import java.awt.image.BufferedImage;
 import Game.Entities.DynamicEntities.Banana;
 import Game.Entities.DynamicEntities.BananaBunch;
 import Game.Entities.DynamicEntities.BaseDynamicEntity;
+import Game.Entities.DynamicEntities.CheckPoint;
+import Game.Entities.DynamicEntities.CheckPointBar;
+import Game.Entities.DynamicEntities.CheckPointBarP2;
+import Game.Entities.DynamicEntities.FinishLine;
+import Game.Entities.DynamicEntities.FinishLineBar;
+import Game.Entities.DynamicEntities.FinishLineBarP2;
 import Game.Entities.DynamicEntities.FunkyKong;
 import Game.Entities.DynamicEntities.Goomba;
 import Game.Entities.DynamicEntities.Klaptrap;
@@ -41,6 +47,8 @@ public class MapBuilder {
 	public static int funkykong = new Color(130,35,0).getRGB(); // Baby Blue
 	public static int smallbanana = new Color(255, 255,0).getRGB(); // Bright Yellow
 	public static int bigbanana = new Color(204, 204,0).getRGB(); // Dark yellow
+	public static int checkPoint = new Color(255, 0, 131).getRGB(); // Pink
+	public static int finishLine = new Color(242, 0, 255).getRGB(); //Bright Purple
 	public static boolean mapDone = false;
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
@@ -89,14 +97,26 @@ public class MapBuilder {
 				}else if(currentPixel == funkykong){
 					BaseDynamicEntity FunkyKong = new FunkyKong(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(FunkyKong);
-				}
-				
-				else if(currentPixel == smallbanana){
+				}else if(currentPixel == smallbanana){
 					BaseDynamicEntity Banana = new Banana(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Banana);
 				}else if(currentPixel == bigbanana){
 					BaseDynamicEntity BananaBunch = new BananaBunch(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(BananaBunch);
+				}else if(currentPixel == checkPoint) {
+					BaseDynamicEntity CheckPoint = new CheckPoint(xPos,yPos-120, pixelMultiplier*2, 168,handler);
+					mapInCreation.addEnemy(CheckPoint);
+					BaseDynamicEntity CheckPointBar = new CheckPointBar(xPos+15,yPos,60, 9,handler);
+					mapInCreation.addEnemy(CheckPointBar);
+					BaseDynamicEntity CheckPointBarP2 = new CheckPointBarP2(xPos+15,yPos,60, 9,handler);
+					mapInCreation.addEnemy(CheckPointBarP2);
+				}else if(currentPixel == finishLine) {
+					BaseDynamicEntity FinishLine = new FinishLine(xPos,yPos-282, 168, 330,handler);
+					mapInCreation.addEnemy(FinishLine);
+					BaseDynamicEntity FinishLineBar = new FinishLineBar(xPos+24,yPos,96, 24,handler);
+					mapInCreation.addEnemy(FinishLineBar);
+					BaseDynamicEntity FinishLineBarP2 = new FinishLineBarP2(xPos+24,yPos,96, 24,handler);
+					mapInCreation.addEnemy(FinishLineBarP2);
 				}
 			}
 

@@ -118,7 +118,11 @@ public class Images {
     public static BufferedImage[] KlapRight;
     public static BufferedImage[] KlapDead;
     
-    
+    public static BufferedImage[] CheckPoint;
+    public static BufferedImage CheckPointBar;
+    public static BufferedImage FinishLine;
+    public static BufferedImage FinishLineBar;
+    private SpriteSheet FinishLineSheet;
     
     public static BufferedImage ready;
     public static BufferedImage go;
@@ -182,6 +186,9 @@ public class Images {
         
         smallbananas = new BufferedImage[3];
         bigbananas = new BufferedImage[3];
+        
+        CheckPoint = new BufferedImage[4];
+        
 
         try {
 
@@ -203,6 +210,7 @@ public class Images {
             DKFKTauntSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DKFKTaunt.png")));
             FontsSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DK Font.png")));
             BananasSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/bananas.png")));
+            FinishLineSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/FinishLine.png")));
             
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
@@ -421,6 +429,16 @@ public class Images {
             ready = FontsSheet.crop(17, 349, 103, 35);
             go = FontsSheet.crop(29, 387, 77, 33);
             goal = FontsSheet.crop(12, 428, 114, 33);
+            
+            
+            CheckPoint[0] = FinishLineSheet.crop(0, 0, 32, 56);
+            CheckPoint[1] = FinishLineSheet.crop(32, 0, 32, 56);
+            CheckPoint[2] = FinishLineSheet.crop(64, 0, 32, 56);
+            CheckPoint[3] = FinishLineSheet.crop(96, 0, 32, 56);
+            CheckPointBar = FinishLineSheet.crop(5, 68, 20, 3);
+            
+            FinishLine = FinishLineSheet.crop(138, 0, 56, 110);
+            FinishLineBar = FinishLineSheet.crop(33, 65, 32, 8);
             
                 
             item[0] =  ImageIO.read(getClass().getResourceAsStream("/Sheets/item/SL1.png"));

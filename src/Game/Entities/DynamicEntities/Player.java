@@ -32,6 +32,9 @@ public class Player extends BaseDynamicEntity {
 	public int initialY;
 	public int hitInvin = 0;
 	public boolean hit = false;
+	public boolean groundpound = false;
+	public boolean touchFinish = false;
+	public double timeCompleted;
 
 	public static int misc = 3;
 
@@ -102,13 +105,17 @@ public class Player extends BaseDynamicEntity {
 	private void checkItemCollision() {
 
 		for (BaseDynamicEntity entity : handler.getMap().getEnemiesOnMap()) {
-			if (entity != null && getBounds().intersects(entity.getBounds()) && entity instanceof Item && !isBig) {
-				isBig = true;
-				this.y -= 48;
-				this.height += 48;
-				setDimension(new Dimension(width, this.height));
-				((Item) entity).used = true;
-				entity.y = -100000;
+			if (entity != null && getBounds().intersects(entity.getBounds()) && entity instanceof Item) {
+				if(entity instanceof Mushroom && !isBig) {
+					isBig = true;
+					this.y -= 48;
+					this.x-= 48;
+					this.height += 48;
+					this.width +=48;
+					setDimension(new Dimension(this.width, this.height));
+					((Item) entity).used = true;
+					entity.y = -100000;
+				}
 			}
 		}
 	}
@@ -144,9 +151,11 @@ public class Player extends BaseDynamicEntity {
 				if(!enemy.ded) {
 					handler.getGame().getMusicHandler().playStomp();
 				}
+				if(!groundpound && !enemy.ded) {
+					falling=false;
+					jump();
+				}
 				enemy.kill();
-				falling=false;
-				jump();
 			}
 		}
 
@@ -191,7 +200,7 @@ public class Player extends BaseDynamicEntity {
 
 		for(BaseDynamicEntity enemy : enemies){
 			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
-			if (marioBounds.intersects(enemyBounds)) {
+			if (marioBounds.intersects(enemyBounds) && !(enemy instanceof Item)) {
 				if(isBig) {
 					hit=true;
 					isBig=false;
@@ -218,6 +227,10 @@ public class Player extends BaseDynamicEntity {
 		dead=false;
 		this.x=initialX;
 		this.y=initialY;
+	}
+	public void setRespawn(int x, int y) {
+		initialX = x;
+		initialY = y;
 	}
 
 	public double getVelX() {

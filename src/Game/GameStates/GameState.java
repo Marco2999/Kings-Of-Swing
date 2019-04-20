@@ -25,14 +25,14 @@ public class GameState extends State {
 		super(handler);
 		handler.getGame().pointer = new UIPointer(28 * MapBuilder.pixelMultiplier,197 * MapBuilder.pixelMultiplier,128,128,handler);
 		uiManager = new UIManager(handler);
-		
+
 		uiManager.addObjects(new UIStringButton(56, 223, 128, 64, "Respawn", () -> {
 			if(handler.getMario().dead || handler.getFunkyKong().dead) {
 				handler.getMouseManager().setUimanager(null);
 				if(handler.getMario().dead)
-				handler.getMario().respawn();
+					handler.getMario().respawn();
 				else
-				handler.getFunkyKong().respawn();
+					handler.getFunkyKong().respawn();
 			}},handler,Color.WHITE));
 
 		uiManager.addObjects(new UIStringButton(56, 223+(64+16), 128, 64, "Options", () -> {
@@ -82,13 +82,20 @@ public class GameState extends State {
 		if(!handler.getMario().dead) {
 			handler.getMap().drawMap(g2);
 			if(handler.getMario().tickCounter<60) {
-				g2.drawImage(Images.ready,handler.getWidth()/2-Images.ready.getWidth(),
-						handler.getHeight()/2-Images.ready.getHeight(), Images.ready.getWidth()*2, Images.ready.getHeight()*2,null);
+				g2.drawImage(Images.ready,handler.getWidth()/2-Images.ready.getWidth()*3/2,
+						handler.getHeight()/2-Images.ready.getHeight()*3/2, Images.ready.getWidth()*3, Images.ready.getHeight()*3,null);
 			}
 			else if(handler.getMario().tickCounter<120) {
-				g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth(),
-						handler.getHeight()/2-Images.go.getHeight(), Images.go.getWidth()*2, Images.go.getHeight()*2,null);
+				g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth()*3/2,
+						handler.getHeight()/2-Images.go.getHeight()*3/2, Images.go.getWidth()*3, Images.go.getHeight()*3,null);
 			}
+			if(handler.getMario().touchFinish) {
+				g2.drawImage(Images.goal,handler.getWidth()/2-Images.go.getWidth()*3/2,
+						handler.getHeight()/2-Images.go.getHeight()*3/2, Images.go.getWidth()*3, Images.go.getHeight()*3,null);
+				g2.setFont(new Font("Times New Roman", Font.BOLD, 100));
+				g2.setColor(Color.red);
+				g2.drawString(String.format("%.2f", handler.getMario().timeCompleted) + " s", handler.getWidth()/2-100, handler.getHeight()/2+150);
+			} 
 		}
 		else {
 			g.drawImage(Images.Pause,0,0,handler.getWidth(),handler.getHeight(),null);
@@ -101,13 +108,20 @@ public class GameState extends State {
 		if(!handler.getFunkyKong().dead) {
 			handler.getMap().drawMapP2(g2);
 			if(handler.getFunkyKong().tickCounter<60) {
-				g2.drawImage(Images.ready,handler.getWidth()/2-Images.ready.getWidth(),
-						handler.getHeight()/2-Images.ready.getHeight(), Images.ready.getWidth()*2, Images.ready.getHeight()*2,null);
+				g2.drawImage(Images.ready,handler.getWidth()/2-Images.ready.getWidth()*3/2,
+						handler.getHeight()/2-Images.ready.getHeight()*3/2, Images.ready.getWidth()*3, Images.ready.getHeight()*3,null);
 			}
 			else if(handler.getFunkyKong().tickCounter<120) {
-				g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth(),
-						handler.getHeight()/2-Images.go.getHeight(), Images.go.getWidth()*2, Images.go.getHeight()*2,null);
+				g2.drawImage(Images.go,handler.getWidth()/2-Images.go.getWidth()*3/2,
+						handler.getHeight()/2-Images.go.getHeight()*3/2, Images.go.getWidth()*3, Images.go.getHeight()*3,null);
 			}
+			if(handler.getFunkyKong().touchFinish) {
+				g2.drawImage(Images.goal,handler.getWidth()/2-Images.go.getWidth()*3/2,
+						handler.getHeight()/2-Images.go.getHeight()*3/2, Images.go.getWidth()*3, Images.go.getHeight()*3,null);
+				g2.setFont(new Font("Times New Roman", Font.BOLD, 100));
+				g2.setColor(Color.red);
+				g2.drawString(String.format("%.2f", handler.getFunkyKong().timeCompleted) + " s", handler.getWidth()/2-100, handler.getHeight()/2+150);
+			} 
 		}
 		else {
 			g.drawImage(Images.Pause,0,0,handler.getWidth(),handler.getHeight(),null);
