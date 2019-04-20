@@ -292,6 +292,14 @@ public class MenuState extends State {
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.8f,0.8f,1), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.bigbanana;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W)){ //FinishLine
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.8f,0.8f,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.checkPoint;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)){ //FinishLine
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.8f,0.8f,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.finishLine;
 		}
 		if(mouseManager.isLeftPressed() && !clicked){
 			int posX =mouseManager.getMouseX()/GridPixelsize;
@@ -321,7 +329,7 @@ public class MenuState extends State {
 			JOptionPane.showMessageDialog(display.getFrame(), "Number key <-> Color Mapping: \n" +
 					"0 -> Erase \n" +
 					"1 -> (Player 1) Donkey Kong (Red)\n" +
-					"Q -> (Player 2) Funky Kong" +
+					"Q -> (Player 2) Funky Kong\n" +
 					"2 -> Break Block (Blue)\n" +
 					"3 -> Mystery Block (Yellow)\n" +
 					"4 -> Surface Block (Orange)\n" +

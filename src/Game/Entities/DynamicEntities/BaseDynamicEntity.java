@@ -91,7 +91,7 @@ public class BaseDynamicEntity extends EntityBase {
 	}
 
 	public void kill() {
-
+		ded = true;
 	}
 
 	
