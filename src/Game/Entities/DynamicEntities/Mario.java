@@ -79,6 +79,17 @@ public class Mario extends Player{
 						velY = velY - gravityAcc;
 						y = (int) (y - velY); 
 					}
+					if(!jumping && !falling && doublejump) {
+						doublejump = false;
+					}
+//					//Double Jump
+//					if (doublejump && velY <= 0) {
+//						doublejump = false;
+//						falling = true;
+//					} else if (doublejump) {
+//						velY = velY - gravityAcc;
+//						y = (int) (y - velY); 
+//					}
 
 					if (falling) {
 						y = (int) (y + velY);
