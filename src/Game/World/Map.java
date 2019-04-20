@@ -39,7 +39,7 @@ public class Map {
 		this.enemiesOnMap = new ArrayList<>();
 		this.playersOnMap = new ArrayList<>();
 		bottomBorder=handler.getHeight();
-		this.mapBackground = this.rand.nextInt(6);
+		this.mapBackground = this.rand.nextInt(4);
 	}
 
 	public void addBlock(BaseStaticEntity block){
@@ -68,7 +68,7 @@ public class Map {
 		handler.setIsInMap(true);
 		Point camLocation = new Point((int)handler.getCamera().getX(), (int)handler.getCamera().getY());
 		g2.translate(-camLocation.x, -camLocation.y);
-		g2.drawImage(Images.backgrounds2[this.mapBackground], camLocation.x, camLocation.y, this.handler.getWidth(), this.handler.getHeight(),null);
+		g2.drawImage(Images.Bgs[this.mapBackground], camLocation.x, camLocation.y, this.handler.getWidth(), this.handler.getHeight(),null);
 		for (BaseStaticEntity block:blocksOnMap) {
 			g2.drawImage(block.sprite,block.x,block.y,block.width,block.height,null);
 		}
@@ -93,6 +93,8 @@ public class Map {
 				g2.drawImage(((Goomba)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
 			}else if(entity instanceof Klaptrap && !entity.ded){
 				g2.drawImage(((Klaptrap)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+			}else if(entity instanceof Zinger && !entity.ded){
+				g2.drawImage(((Zinger)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
 			}else if(entity instanceof UIPointer ){
 				((UIPointer) entity).render(g2);
 			}else {
@@ -119,7 +121,7 @@ public class Map {
 		handler.setIsInMap(true);
 		Point camLocation = new Point((int)handler.getCameraP2().getX(), (int)handler.getCameraP2().getY());
 		g2.translate(-camLocation.x, -camLocation.y);
-		g2.drawImage(Images.backgrounds2[this.mapBackground], camLocation.x, camLocation.y, this.handler.getWidth(), this.handler.getHeight(),null);
+		g2.drawImage(Images.Bgs[this.mapBackground], camLocation.x, camLocation.y, this.handler.getWidth(), this.handler.getHeight(),null);
 		for (BaseStaticEntity block:blocksOnMap) {
 			g2.drawImage(block.sprite,block.x,block.y,block.width,block.height,null);
 		}
@@ -144,6 +146,8 @@ public class Map {
 				g2.drawImage(((Goomba)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
 			}else if(entity instanceof Klaptrap && !entity.ded){
 				g2.drawImage(((Klaptrap)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+			}else if(entity instanceof Zinger && !entity.ded){
+				g2.drawImage(((Zinger)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
 			}else if(entity instanceof UIPointer ){
 				((UIPointer) entity).render(g2);
 			}else {

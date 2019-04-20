@@ -23,7 +23,7 @@ public class Player extends BaseDynamicEntity {
 	public Animation playerLeftAnimation,playerRightAnimation,playerIdleRightAnimation, playerIdleLeftAnimation,
 	playerJumpRightAnimation, playerJumpLeftAnimation, playerRunRightAnimation, playerRunLeftAnimation;
 	public boolean falling = true, jumping = false,isBig=true,running = false,changeDirrection=false, doublejump=false;
-	public int jumpc = 2, djcounter =0, djcountertick =0;
+	public int jumpc = 2, djcounter =1, djcountertick =0;
 	public double gravityAcc = 0.38;
 	int changeDirectionCounter=0;
 	public int tickCounter=0;
@@ -210,7 +210,21 @@ public class Player extends BaseDynamicEntity {
 
 		for(BaseDynamicEntity enemy : enemies){
 			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
+			Rectangle enemybottomBounds = enemy.getBottomBounds();
 			if (marioBounds.intersects(enemyBounds) && !(enemy instanceof Item)) {
+				if(isBig) {
+					hit=true;
+					isBig=false;
+					this.x+=48;
+					this.y+=48;
+					this.height-=48;
+					this.width-=48;
+					setDimension(new Dimension(this.width, this.height));
+				}
+				else if(hitInvin==0)
+					dead=true;
+			}
+			if (marioBounds.intersects(enemybottomBounds) && !(enemy instanceof Item)) {
 				if(isBig) {
 					hit=true;
 					isBig=false;

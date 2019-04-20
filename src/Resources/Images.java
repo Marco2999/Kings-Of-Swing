@@ -118,6 +118,11 @@ public class Images {
     public static BufferedImage[] KlapRight;
     public static BufferedImage[] KlapDead;
     
+    private SpriteSheet ZingerSheet;
+    public static BufferedImage[] ZingerLeft;
+    public static BufferedImage[] ZingerRight;
+    public static BufferedImage[] Zingerdead;
+    
     public static BufferedImage[] CheckPoint;
     public static BufferedImage CheckPointBar;
     public static BufferedImage FinishLine;
@@ -128,6 +133,14 @@ public class Images {
     public static BufferedImage go;
     public static BufferedImage goal;
     
+    private SpriteSheet BGs;
+    public static BufferedImage Bgs[];
+    public static BufferedImage TitleBG;
+    
+    public static BufferedImage jungle;
+    public static BufferedImage treetops;
+    public static BufferedImage densejungle;
+    public static BufferedImage nightjungle;
     
     
     public Images() {
@@ -184,10 +197,17 @@ public class Images {
         KlapLeft = new BufferedImage[4];
         KlapDead = new BufferedImage[2];
         
+        ZingerLeft = new BufferedImage[5];
+        ZingerRight = new BufferedImage[5];
+        Zingerdead = new BufferedImage[2];
+        
         smallbananas = new BufferedImage[3];
         bigbananas = new BufferedImage[3];
         
         CheckPoint = new BufferedImage[4];
+        
+        Bgs = new BufferedImage[4];
+        
         
 
         try {
@@ -211,6 +231,7 @@ public class Images {
             FontsSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DK Font.png")));
             BananasSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/bananas.png")));
             FinishLineSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/FinishLine.png")));
+            ZingerSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/zinger.png")));
             
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
@@ -236,6 +257,14 @@ public class Images {
             backgrounds2[3] = ImageIO.read(getClass().getResourceAsStream("/Sheets/DesertBackground.png"));
             backgrounds2[4] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Snow1Background.png"));
             backgrounds2[5] = ImageIO.read(getClass().getResourceAsStream("/Sheets/Snow2Background.png"));
+            
+            BGs = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/DKBgs.png")));
+            TitleBG =  ImageIO.read(getClass().getResourceAsStream("/Sheets/DKTitleScreen.png"));
+
+            Bgs[0]= BGs.crop(25, 46, 240, 160);
+            Bgs[1] = BGs.crop(25, 217, 240, 160);
+            Bgs[2] = BGs.crop(286, 585, 240, 160);
+            Bgs[3] = BGs.crop(25, 1124, 240, 160);
 
 
             //player sprites
@@ -370,6 +399,21 @@ public class Images {
             KlapDead[0] = KlapSheet.crop(5, 69, 32, 18);
             KlapDead[1] = KlapSheet.crop(45, 69, 32, 18);
             
+            ZingerLeft[0] = ZingerSheet.crop(0, 0, 45, 33);
+            ZingerLeft[1] = ZingerSheet.crop(57, 4, 46, 27);
+            ZingerLeft[2] = ZingerSheet.crop(119, 1, 40, 33);
+            ZingerLeft[3] = ZingerSheet.crop(170, 3, 41, 30);
+            ZingerLeft[4] = ZingerSheet.crop(220, 0, 39, 36);
+            
+            ZingerRight[4] = ZingerSheet.crop(0, 34, 39, 36);
+            ZingerRight[3] = ZingerSheet.crop(46, 37, 43, 30);
+            ZingerRight[2] = ZingerSheet.crop(100, 35, 42, 33);
+            ZingerRight[1] = ZingerSheet.crop(156, 38, 46, 27);
+            ZingerRight[0] = ZingerSheet.crop(214, 36, 45, 33);
+            
+            Zingerdead[0] = ZingerSheet.crop(0, 72, 45, 33);
+            Zingerdead[1] = ZingerSheet.crop(46, 72, 45, 33);
+            
             
             FKIdleRight[0] = FunkyKongSheet.crop(7, 7, 36, 36);
             FKIdleRight[1] = FunkyKongSheet.crop(49, 7, 36, 36);
@@ -439,7 +483,7 @@ public class Images {
             
             FinishLine = FinishLineSheet.crop(138, 0, 56, 110);
             FinishLineBar = FinishLineSheet.crop(33, 65, 32, 8);
-            
+
                 
             item[0] =  ImageIO.read(getClass().getResourceAsStream("/Sheets/item/SL1.png"));
             item[1] =  ImageIO.read(getClass().getResourceAsStream("/Sheets/item/SL2.png"));
