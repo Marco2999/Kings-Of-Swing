@@ -24,7 +24,8 @@ public class Player extends BaseDynamicEntity {
 	public boolean moving = false;
 	public Animation playerLeftAnimation,playerRightAnimation,playerIdleRightAnimation, playerIdleLeftAnimation,
 	playerJumpRightAnimation, playerJumpLeftAnimation, playerRunRightAnimation, playerRunLeftAnimation;
-	public boolean falling = true, jumping = false,isBig=true,running = false,changeDirrection=false;
+	public boolean falling = true, jumping = false,isBig=true,running = false,changeDirrection=false, doublejump=false;
+	public int jumpc = 2, djcounter =0, djcountertick =0;
 	public double gravityAcc = 0.38;
 	int changeDirectionCounter=0;
 	public int tickCounter=0;
@@ -58,6 +59,15 @@ public class Player extends BaseDynamicEntity {
 
 	@Override
 	public void tick(){
+		//DK double jump
+		if(!jumping && !falling) {jumpc =2; }
+		djcountertick++;
+		if(djcountertick > 100) {
+			djcounter =1;
+			djcountertick =0;
+			jumpc=2;
+		}
+		
 		if (changeDirrection) {
 			changeDirectionCounter++;
 		}
@@ -224,11 +234,28 @@ public class Player extends BaseDynamicEntity {
 	}
 
 	public void jump() {
-		if(!jumping && !falling){
+		if(this instanceof Mario && jumpc ==2 ) {
+			falling = false;
+			jumpc--;
+			jumping = true;
+			velY = 10;
+			handler.getGame().getMusicHandler().playJump();
+			
+		}
+		else if(this instanceof Mario && jumpc == 1 && djcounter==1) {
+			falling = false;
+			jumpc--;
+			jumping = true;
+			velY = 10;
+			handler.getGame().getMusicHandler().playJump();
+			djcounter--;
+		}
+		else if(this instanceof FunkyKong && !jumping && !falling){
 			jumping=true;
 			velY=10;
 			handler.getGame().getMusicHandler().playJump();
 		}
+		
 	}
 	public void respawn() {
 		dead=false;
