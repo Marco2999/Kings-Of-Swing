@@ -352,8 +352,6 @@ public class MenuState extends State {
 					"0 -> Erase \n" +
 					"1 -> (Player 1) Donkey Kong (Red)\n" +
 					"Q -> (Player 2) Funky Kong\n" +
-					"W -> CheckPoint (Pink)\n" + 
-					"E -> FinishLine (Bright Purple)\n" + 
 					"2 -> Break Block (Blue)\n" +
 					"3 -> Mystery Block (Yellow)\n" +
 					"4 -> Surface Block (Orange)\n" +

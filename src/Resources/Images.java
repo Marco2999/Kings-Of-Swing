@@ -600,7 +600,7 @@ public class Images {
             //Custom maps
             BananaChase = ImageIO.read(getClass().getResourceAsStream("/maps/2 Player Banana Chase.png"));
             p2Race = ImageIO.read(getClass().getResourceAsStream("/maps/2 Player Race.png"));
-            Showcase1 = ImageIO.read(getClass().getResourceAsStream("/maps/Showcase1.png"));
+            Showcase1 = ImageIO.read(getClass().getResourceAsStream("/maps/Hello World Showcase1.png"));
             Showcase2 = ImageIO.read(getClass().getResourceAsStream("/maps/Showcase2.png"));
 
             //blocks
