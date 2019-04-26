@@ -79,6 +79,11 @@ public class Images {
 
     public static BufferedImage testMap;
     public static BufferedImage testMaptwo;
+    
+    public static BufferedImage BananaChase;
+    public static BufferedImage p2Race;
+    public static BufferedImage Showcase1;
+    public static BufferedImage Showcase2;
 
     public static BufferedImage breakBlock;
     public static BufferedImage misteryBlock;
@@ -591,6 +596,12 @@ public class Images {
             //maps
             testMap = ImageIO.read(getClass().getResourceAsStream("/maps/testmap1.png"));
             testMaptwo = ImageIO.read(getClass().getResourceAsStream("/maps/testmap2.png"));
+            
+            //Custom maps
+            BananaChase = ImageIO.read(getClass().getResourceAsStream("/maps/2 Player Banana Chase.png"));
+            p2Race = ImageIO.read(getClass().getResourceAsStream("/maps/2 Player Race.png"));
+            Showcase1 = ImageIO.read(getClass().getResourceAsStream("/maps/Showcase1.png"));
+            Showcase2 = ImageIO.read(getClass().getResourceAsStream("/maps/Showcase2.png"));
 
             //blocks
             boundBlock = interactableSpriteSheet.crop(12,73,16,16);

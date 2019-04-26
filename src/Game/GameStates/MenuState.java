@@ -120,19 +120,19 @@ public class MenuState extends State {
 
 
 				//testMap1
-				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Map 1", () -> {
+				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Showcase 1", () -> {
 					if(!handler.isInMap()) {
 						mode = "Menu";
-						handler.setMap(MapBuilder.createMap(Images.testMap, handler));
+						handler.setMap(MapBuilder.createMap(Images.Showcase1, handler));
 						State.setState(handler.getGame().gameState);
 					}
 				}, handler,Color.BLACK));
 
 				//testmap2
-				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (64), 128, 64, "Map 2", () -> {
+				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (64), 128, 64, "Showcase 2", () -> {
 					if(!handler.isInMap()) {
 						mode = "Menu";
-						handler.setMap(MapBuilder.createMap(Images.testMaptwo, handler));
+						handler.setMap(MapBuilder.createMap(Images.Showcase2, handler));
 						State.setState(handler.getGame().gameState);
 					}
 				}, handler,Color.BLACK));
@@ -172,6 +172,24 @@ public class MenuState extends State {
 					if(!handler.isInMap()) {
 						mode = "Menu";
 						initNew("New Map Creator", handler);
+					}
+				}, handler,Color.BLACK));
+				
+				//2 Player Banana Chase
+				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 130, (handler.getHeight() / 2) + (handler.getHeight() / 10) - (5), 128, 64, "2 Player Banana Chase", () -> {
+					if(!handler.isInMap()) {
+						mode = "Menu";
+						handler.setMap(MapBuilder.createMap(Images.BananaChase, handler));
+						State.setState(handler.getGame().gameState);
+					}
+				}, handler,Color.BLACK));
+				
+				//2 Player Race
+				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 85, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (50), 128, 64, "2 Player Race", () -> {
+					if(!handler.isInMap()) {
+						mode = "Menu";
+						handler.setMap(MapBuilder.createMap(Images.p2Race, handler));
+						State.setState(handler.getGame().gameState);
 					}
 				}, handler,Color.BLACK));
 			
