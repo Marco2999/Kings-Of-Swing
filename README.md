@@ -10,6 +10,23 @@ Marcos Camacho Gómez  < marcos.camacho@upr.edu  >
 Requirements:
 All of the requirements were implemented.
 
+This game is our take on the game Mario Maker. There's a map maker implemented in the game.
+Press "New Map" while in map selection screen to make your own map.
+While here, press "H" to see the hotkeys, and ENTER to finish.
+
+( WARNING: Don't place both Bananas and a Finish Line in the same level. )
+
+Controls:
+	
+	Player 1 (Donkey Kong):
+		W,A,S,D
+		Shift for sprint
+		Space for jump
+	Player2 (Funky Kong):
+		Arrow Keys
+		Slash for sprint
+	 	Right Ctrl for jump
+
 New Maps:
 
 	Single Player:

@@ -224,7 +224,7 @@ public class MenuState extends State {
 	}
 
 	private void initNew(String title,Handler handler){
-		display = new DisplayScreen(title + "              (H for Mapping)", DisplayWidth, DiplayHeight);
+		display = new DisplayScreen(title + "   (H for Mapping)   (ENTER to finish)", DisplayWidth, DiplayHeight);
 		display.getFrame().addKeyListener(keyManager);
 		display.getFrame().addMouseListener(mouseManager);
 		display.getFrame().addMouseMotionListener(mouseManager);
