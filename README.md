@@ -20,10 +20,12 @@ New Maps:
 		- 2 Player Race
 		
 New Enemies:
+
 	- Klaptrap
 	- Zinger
 	
 New Blocks:
+
 	- Donut Block
 	- Beam Block
 	- Cloud Block
@@ -47,7 +49,8 @@ Game modes:
 	WARNING: Don't place both Bananas and a Finish Line in the same level.
 	
 
-Many small details were added as bonus.
+Many small details were added as bonus: 
+
 	- DK and Funky Kong instead of Mario and Luigi.
 	  Both were given full unique animations and designs.
 	- Klaptrap, Zinger, Banana, and Banana Bunch all have their own animations.
