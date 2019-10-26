@@ -13,7 +13,7 @@ All of the requirements were implemented.
 New Maps:
 
 	Single Player:
-		- Hello World Showcase 1
+		- Showcase 1
 		- Showcase 2
 	Multi-Player:
 		- 2 Player Banana Chase
@@ -34,17 +34,17 @@ Items:
 	- Banana Bunch
 
 Multiplayer:
+
 	Second player is called Funky Kong. Second player has his own camera.
 	Donkey Kong has the special ability to double jump.
 	Funky Kong has the special ability to ground pound.
 	
 Game modes:
+
 	- Banana Chase
 	- Race to finish line
 	(Both playable in multiplayer.)
 	
-	
-Bonus:
 
 Many small details were added as bonus.
 	- DK and Funky Kong instead of Mario and Luigi.
