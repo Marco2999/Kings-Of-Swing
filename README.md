@@ -44,6 +44,7 @@ Game modes:
 	- Banana Chase
 	- Race to finish line
 	(Both playable in multiplayer.)
+	WARNING: Don't place both Bananas and a Finish Line in the same level.
 	
 
 Many small details were added as bonus.
